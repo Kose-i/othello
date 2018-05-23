@@ -1,5 +1,5 @@
 #ifndef OTHELLO_PLAYER_HPP
-#define OTHELLO_PLYAER_HPP
+#define OTHELLO_PLAYER_HPP
 
 #include <iostream>
 #include <vector>
@@ -11,7 +11,7 @@ class Player// : Hand
 {
   friend class Board;
   public:
-    Player(class Board&);
+    Player(class Board&, const Board_env&);
     ~Player();
     Board* val;
     void define_spot();
