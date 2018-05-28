@@ -18,14 +18,14 @@ enum class Board_env
 class Board
 {
   public:
-    int get_x(const Point&);
-    int get_y(const Point&);
+    int get_x(const Point&)const;
+    int get_y(const Point&)const;
     int& set_x(Point&);
     int& set_y(Point&);
     Board();
 //    Board(const class Board*);
     ~Board();
-    void print_board();
+    void print_board()const;
     Board_env define_enemy_color(const Board_env&);
     std::bitset<8> judge_direction(const Point&, const Board_env&);
     void put_stone(const Point& , const Board_env&);

@@ -15,8 +15,9 @@ int main()
   Computer com(board,Board_env::white);
 
   bool path_find = true;
-  for(int i = 0;i < 60;++i, path_find = true){
+  for(;true;path_find = true){
 
+    path_find = true;
     std::vector<Point> pos = board.put_able_spot(Board_env::black);
     if (pos.size() == 0) {
       std::cout << "you are path\n";
@@ -31,14 +32,15 @@ int main()
     pos = board.put_able_spot(Board_env::white);
     if(pos.size() == 0)
     {
-      std::cout << "you are path\n";continue;
+      std::cout << "you are path\n";
+      if(path_find == true)break;
+      else continue;
     } else {
       path_find = false;
       for (auto& e : pos) std::cout << "x is " << e.first << "y is " << e.second << '\n';
       com.define_spot();
       std::cout << "result is \n";
     }
-    if(path_find == true)break;
   }
   Board_env winner =  board.define_winner();
   if (winner == Board_env::black)std::cout << "winner is black\n";

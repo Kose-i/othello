@@ -21,11 +21,11 @@ Point operator+(const Point& pos1, const Point& pos2)
   return ans_pos;
 }
 
-int Board::get_x(const Point& pos)
+int Board::get_x(const Point& pos) const
 {
   return pos.first;
 }
-int Board::get_y(const Point& pos)
+int Board::get_y(const Point& pos) const
 {
   return pos.second;
 }
@@ -51,7 +51,7 @@ Board::Board(class Board* cp) : board(&cp)
 */
 Board::~Board(){};
 
-void Board::print_board()
+void Board::print_board() const
 {
   std::cout << " 01234567 -> x\n";
   for (int i = 0;i < 8;++i)
