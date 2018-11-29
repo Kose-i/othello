@@ -22,27 +22,12 @@ int main(int argc, char** argv)
   }
   return 0;
 }
+
 #if 0
 using Point = std::pair<int,int>;
 int main()
 {
   Board board;
-
-  std::ifstream ifs("../config/detect_hand.txt");
-  Board_env player1, player2;
-
-  if (!ifs.is_open()) {
-    std::cout << "can't open file";
-    return -1;
-  } else {
-    std::string s1, s2;
-    ifs >> s1 >> s2;
-    if (s1.find("Black")&& s2.find("White")) {
-    } else if (s1.find("White") && s2.find("Black")) {
-    } else {
-    }
-    std::cout << ss;
-  }
 
   Player player(board,Board_env::black);
   Computer com(board,Board_env::white);
