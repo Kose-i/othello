@@ -19,8 +19,6 @@ Game::Game():ifs{file_path}
   std::getline(ifs, s1);
   std::getline(ifs, s2);
   if (s1.find("Black") && s2.find("White")) {
-    if (s1.find("computer")) {
-    }
   } else if (s1.find("White") && s2.find("Black")) {
   }
 };

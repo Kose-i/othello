@@ -17,6 +17,8 @@ enum class Board_env
 
 class Board
 {
+  private:
+    std::vector<std::vector<Board_env>> board;
   public:
     Board();
 //    Board(const class Board*);
@@ -29,7 +31,6 @@ class Board
     bool map_edge(const Point&);
     bool move_map_edge(const Point& pos, const Point& move);
     std::vector<Point> put_able_spot(const Board_env&);
-    std::vector<std::vector<Board_env>> board;
     Board_env define_winner();
 };
 

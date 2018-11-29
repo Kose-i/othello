@@ -6,7 +6,7 @@
 //#include "Hyoukakansuu.hpp"
 #include <vector>
 
-class Computer:public Hand// , Hyoukakansuu
+class Computer//:// Hand// , Hyoukakansuu
 {
   private:
     Board board_state;
