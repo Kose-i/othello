@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <memory>
 
 #include "Board.hpp"
 #include "Point.hpp"
@@ -12,11 +13,11 @@
 class Player: public Hand
 {
   private:
-    Board board_state;
+    std::shared_ptr<Board> board_state;
     Board_env my_stone_color;
     Board_env enemy_stone_color;
   public:
-    Player(class Board&, const Board_env&);
+    Player(std::shared_ptr<Board>&, const Board_env&);
     ~Player();
     void init();
     void init_enemy_stone();

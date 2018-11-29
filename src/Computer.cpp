@@ -23,7 +23,7 @@ void Computer::init_enemy_color()
 
 Point Computer::define_spot()
 {
-  std::vector<Point> put_able = board_state.put_able_spot(my_stone_color);
+  std::vector<Point> put_able = board_state->put_able_spot(my_stone_color);
   int size = put_able.size();
   int best_put = 0;
   int count_enemy = -1000;

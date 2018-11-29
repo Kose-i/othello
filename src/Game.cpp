@@ -1,13 +1,14 @@
 #include "Game.hpp"
-//#include "Point.hpp"
-//#include "Board.hpp"
-//#include "Player.hpp"
-//#include "Computer.hpp"
+#include "Point.hpp"
+#include "Board.hpp"
+#include "Player.hpp"
+#include "Computer.hpp"
 
 #include <fstream>
 #include <string>
 #include <iostream>
 #include <map>
+#include <memory>
 
 Game::Game():ifs{file_path}
 {
@@ -30,6 +31,12 @@ Game::~Game()
 
 void Game::init()
 {
+  std::shared_ptr<class Board> board;
+  class Computer comp(board, Board_env::black);
+  class Player player(board, Board_env::white);
+
+  players[Board_env::black] = comp;
+  players[Board_env::white] = player;
 };
 
 void Game::run()
