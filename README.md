@@ -3,6 +3,7 @@
 This is othello repository
 
 ## File constitution
+
 | class | configure |
 ----|----
 | Game | Othello game class |
@@ -10,6 +11,7 @@ This is othello repository
 | Computer | computer class |
 | Hyoukakansuu | for computer class |
 | Player | player class |
+| Point | position class |
 
 ## How to Use
 

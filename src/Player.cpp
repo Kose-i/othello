@@ -6,6 +6,7 @@
 #include <string>
 
 #include "Board.hpp"
+#include "Point.hpp"
 
 std::istream& operator>>(std::istream& is , Point& pos)
 {
@@ -22,7 +23,7 @@ bool isdigit(const std::string& str)
   if("0" <= str && str <= "9")return true;
   return false;
 }
-void Player::define_spot()
+Point Player::define_spot()
 {
   std::vector<Point> put_able = val->put_able_spot(player_stone);
   Point pos;

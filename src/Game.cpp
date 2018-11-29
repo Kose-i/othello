@@ -1,4 +1,5 @@
 #include "Game.hpp"
+//#include "Point.hpp"
 //#include "Board.hpp"
 //#include "Player.hpp"
 //#include "Computer.hpp"

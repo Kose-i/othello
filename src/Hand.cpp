@@ -4,10 +4,9 @@
 #include <utility>
 
 #include "Board.hpp"
+#include "Point.hpp"
 
-using Point = std::pair<int,int>;
 Point Hand::define_stone()
 {
-  std::cout << "undefined\n";
-  return {0,0};
+  return Point{};
 };

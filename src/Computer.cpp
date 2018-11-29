@@ -5,8 +5,8 @@
 #include <utility>
 
 #include "Board.hpp"
+#include "Point.hpp"
 
-using Point = std::pair<int,int>;
 /*
 std::istream& operator>>(std::istream& is , Point& pos)
 {
@@ -25,7 +25,7 @@ Board_env define_enemy_color(const Board_env& my_color)
   return Board_env::black;
 }
 
-void Computer::define_spot()
+Point Computer::define_spot()
 {
   std::vector<Point> put_able = val->put_able_spot(computer_stone);
   int size = put_able.size();
@@ -52,6 +52,6 @@ void Computer::define_spot()
       best_put = i;
     }
   }
-  val->put_stone(put_able[best_put],computer_stone);
+  return (put_able[best_put],computer_stone);
 }
 

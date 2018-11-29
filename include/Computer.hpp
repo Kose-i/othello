@@ -2,11 +2,11 @@
 #define OTHELLO_COMPUTER_HPP
 
 #include "Board.hpp"
-//#include "Hand.hpp"
+#include "Hand.hpp"
 //#include "Hyoukakansuu.hpp"
 #include <vector>
 
-class Computer// :Hand// , Hyoukakansuu
+class Computer:public Hand// , Hyoukakansuu
 {
   friend class Board;
   private:
