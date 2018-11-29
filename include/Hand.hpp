@@ -8,13 +8,13 @@
 
 class Hand
 {
-  public:
-    Hand(class Board board_val_, const Board_env& board_env) :board_val(board_val_), my_board_env(board_env)
-    {};
-    virtual ~Hand(){};
-    virtual Point define_spot();
   private:
-    Board_env my_board_env;
-    Board board_val;
+    Board board_state;
+    Board_env my_stone_color;
+    Board_env enemy_stone_color;
+  public:
+    Hand(class Board&, const Board_env&);
+    Point define_spot();
+    virtual ~Hand();
 };
 #endif
