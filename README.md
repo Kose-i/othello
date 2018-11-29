@@ -3,8 +3,9 @@
 This is othello repository
 
 ## File constitution
-| Game | Othello game class |
+| class | configure |
 ----|----
+| Game | Othello game class |
 | Hand | abstracle class |
 | Computer | computer class |
 | Hyoukakansuu | for computer class |
