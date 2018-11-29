@@ -9,12 +9,6 @@
 class Computer// :Hand// , Hyoukakansuu
 {
   friend class Board;
-  public:
-    Computer(class Board& , const Board_env&);
-    ~Computer();
-    Board* val;
-    void define_spot();
-    Board_env computer_stone;
   private:
     std::vector<std::vector<int>> costmap{
           {100,-40,20, 5, 5,20,-40,100},
@@ -26,5 +20,12 @@ class Computer// :Hand// , Hyoukakansuu
           {-40,-80,-1,-1,-1,-1,-80,-40},
           {100,-40,20, 5, 5,20,-40,100},
         };
+
+  public:
+    Computer(class Board& , const Board_env&);
+    ~Computer();
+    Board* val;
+    void define_spot();
+    Board_env computer_stone;
 };
 #endif

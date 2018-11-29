@@ -13,5 +13,6 @@ class Hand
     virtual ~Hand(){};
     virtual void definestone();
   private:
+    Board_env my_board_env;
 };
 #endif
