@@ -8,7 +8,6 @@
 
 class Computer:public Hand// , Hyoukakansuu
 {
-  friend class Board;
   private:
     Board board_state;
     Board_env my_stone_color;
