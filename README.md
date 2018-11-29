@@ -10,6 +10,8 @@ This is othello repository
 ----|----
 |Computer|computer class|
 ----|----
+|Hyoukakansuu|for computer class|
+----|----
 |Player|player class|
 ----|----
 

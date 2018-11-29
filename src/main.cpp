@@ -3,10 +3,20 @@
 #include <utility>
 #include <vector>
 
+#include "Game.hpp"
 #include "Board.hpp"
 #include "Player.hpp"
 #include "Computer.hpp"
 
+int main(int argc, char** argv)
+{
+  Game game_;
+  game_.init();
+  game_.run();
+  std::cout << "end";
+  return 0;
+}
+#if 0
 using Point = std::pair<int,int>;
 int main()
 {
@@ -65,3 +75,4 @@ int main()
   else if (winner == Board_env::white)std::cout << "winner is white\n";
   else std::cout << "draw\n";
 }
+#endif
