@@ -1,0 +1,3 @@
+#hand
+Black- computer
+White- player
