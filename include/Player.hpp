@@ -6,16 +6,20 @@
 #include <utility>
 
 #include "Board.hpp"
-//#include "Hand.hpp"
+#include "Point.hpp"
+#include "Hand.hpp"
 
-class Player// : Hand
+class Player: public Hand
 {
-  friend class Board;
+  private:
+    Board board_state;
+    Board_env my_stone_color;
+    Board_env enemy_stone_color;
   public:
     Player(class Board&, const Board_env&);
     ~Player();
-    Board* val;
-    void define_spot();
-    Board_env player_stone;
+    void init();
+    void init_enemy_stone();
+    Point define_spot();
 };
 #endif

@@ -10,5 +10,5 @@ src/Board.cpp
 src/Hand.cpp
 src/Computer.cpp
 src/Point.cpp
-#src/Prayer
+src/Player.cpp
 )

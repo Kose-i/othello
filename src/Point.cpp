@@ -39,3 +39,7 @@ Point& Point::operator+=(const Point& pos)
   set_y(y + pos.get_y());
   return *this;
 }
+bool Point::operator==(const Point& pos)
+{
+  return (x == pos.get_x() && y == pos.get_y());
+}

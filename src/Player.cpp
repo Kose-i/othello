@@ -8,16 +8,7 @@
 #include "Board.hpp"
 #include "Point.hpp"
 
-std::istream& operator>>(std::istream& is , Point& pos)
-{
-  int x, y;
-  std::cin >> x >> y;
-  pos.set_x(x);
-  pos.set_y(y);
-  return is;
-}
-
-Player::Player(class Board& board, const Board_env& player_color) :val(&board), player_stone(player_color){};
+Player::Player(class Board& board, const Board_env& player_color) :board_state(board), my_stone_color(player_color){};
 Player::~Player(){};
 
 bool isdigit(const std::string& str)
@@ -26,9 +17,10 @@ bool isdigit(const std::string& str)
   if("0" <= str && str <= "9")return true;
   return false;
 }
+
 Point Player::define_spot()
 {
-  std::vector<Point> put_able = val->put_able_spot(player_stone);
+  std::vector<Point> put_able = board_state.put_able_spot(my_stone_color);
   Point pos;
   bool find = false;
   do{
@@ -41,17 +33,15 @@ Point Player::define_spot()
     std::string str,str2;
     std::cin >> str >> str2;
     if(!isdigit(str) || !isdigit(str2))continue;
-    pos.first = std::stoi(str);
-    pos.second = std::stoi(str2);
+    pos.set_x(std::stoi(str));
+    pos.set_y(std::stoi(str2));
     std::cout << "check\n";
-    for (const auto& e : put_able)
-    {
-      if (e == pos)
-      {
+    for (const auto& e : put_able) {
+      if (pos == e) {
         find = true;
         break;
       }
     }
   }while(find == false);
-  val->put_stone(pos,player_stone);
+  return pos;
 }
