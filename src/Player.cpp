@@ -10,7 +10,10 @@
 
 std::istream& operator>>(std::istream& is , Point& pos)
 {
-  std::cin >> pos.first >> pos.second;
+  int x, y;
+  std::cin >> x >> y;
+  pos.set_x(x);
+  pos.set_y(y);
   return is;
 }
 
