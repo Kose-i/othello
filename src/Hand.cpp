@@ -6,7 +6,7 @@
 #include "Board.hpp"
 #include "Point.hpp"
 
-Point Hand::define_stone()
+Point Hand::define_spot()
 {
   return Point{};
 };

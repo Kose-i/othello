@@ -42,10 +42,10 @@ Point Computer::define_spot()
     std::vector<Point> pos = cp_board.put_able_spot(enemy_stone);
     for (auto& e : pos)
     {
-      std::cout << "x is " << e.first << "y is " << e.second << '\n';
+      std::cout << "x is " << get_x(e) << "y is " << get_y(e) << '\n';
     }
     int cost = 0;
-    if((cost = costmap[put_able[i].second][put_able[i].first] - 5 * pos.size()) > count_enemy)
+    if((cost = costmap[get_y(put_able[i])][get_x(put_able[i])] - 5 * pos.size()) > count_enemy)
     {
       count_enemy =cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
       std::cout <<"this cost is "<< cost << '\n';

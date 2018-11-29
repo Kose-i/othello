@@ -2,20 +2,19 @@
 #define OTHELLO_HAND_HPP
 
 #include "Board.hpp"
+#include "Point.hpp"
 
 #include <vector>
-#include <utility>
 
 class Hand
 {
-  using Point = std::pair<int,int>;
-
   public:
-    Hand(class Board, const Board_env& board_env) :my_board_env(board_env)
+    Hand(class Board board_val_, const Board_env& board_env) :board_val(board_val_), my_board_env(board_env)
     {};
     virtual ~Hand(){};
-    virtual Point define_stone();
+    virtual Point define_spot();
   private:
     Board_env my_board_env;
+    Board board_val;
 };
 #endif

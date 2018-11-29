@@ -6,7 +6,7 @@
 #include <bitset>
 #include <utility>
 
-using Point = std::pair<int,int>;
+#include "Point.hpp"
 
 enum class Board_env
 {
@@ -18,10 +18,6 @@ enum class Board_env
 class Board
 {
   public:
-    int get_x(const Point&)const;
-    int get_y(const Point&)const;
-    int& set_x(Point&);
-    int& set_y(Point&);
     Board();
 //    Board(const class Board*);
     ~Board();
