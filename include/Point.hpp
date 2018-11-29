@@ -17,7 +17,7 @@ class Point{
     void set_x(const int&);
     void set_y(const int&);
 
-    Point operator+(const Point&);
+    const Point operator+(const Point&);
     Point& operator+=(const Point&);
 };
 

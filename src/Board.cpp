@@ -52,7 +52,7 @@ void Board::put_stone(const Point& pos ,const Board_env& my_color)
   {
     if(judge[i])
     {
-      Point new_pos = pos + eight_direction[i];
+      Point new_pos = eight_direction[i] + pos;
       while(board[new_pos.get_y()][new_pos.get_x()] != my_color)
       {
         board[new_pos.get_y()][new_pos.get_x()] = my_color;
@@ -87,9 +87,9 @@ std::vector<Point> Board::put_able_spot(const Board_env& my_color)
 567
 */
 
-bool Board::move_direction_map_edge(const Point& pos, const Point& move_direction)
+bool Board::is_map_edge(const Point& pos, const Point& move_direction)
 {
-  if (0)
+  if (false);
   else if (pos.get_x() == 0 && move_direction.get_x() == -1)return true;
   else if (pos.get_y() == 0 && move_direction.get_y() == -1)return true;
   else if (pos.get_x() == 7 && move_direction.get_x() ==  1)return true;
@@ -123,18 +123,18 @@ std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_col
   for (int i = 0;i < 8;++i)
   {
     if(!judge[i])continue;
-    Point new_pos = pos + eight_direction[i];
+    Point new_pos = eight_direction[i] + pos;
 
     if ( board[new_pos.get_y()][new_pos.get_x()] != enemy_color) {
       judge[i] = false;
       continue;
-    } else if(move_map_edge(new_pos, eight_direction[i])) {
+    } else if(is_map_edge(new_pos, eight_direction[i])) {
       judge[i] = false;
       continue;
     }
     do{
       new_pos += eight_direction[i];
-      if(move_map_edge(new_pos, eight_direction[i]))break;
+      if(is_map_edge(new_pos, eight_direction[i]))break;
     }while (board[new_pos.get_y()][new_pos.get_x()] == enemy_color);
     if(board[new_pos.get_y()][new_pos.get_x()] != my_color) {
       judge[i] = false;

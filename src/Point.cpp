@@ -22,7 +22,7 @@ void Point::set_y(const int& y_){
   y = y_;
 };
 
-Point Point::operator+(const Point& pos)
+const Point Point::operator+(const Point& pos)
 {
   Point ans{};
   int t_x, t_y;
