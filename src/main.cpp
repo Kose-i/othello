@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <utility>
 #include <vector>
 
@@ -10,6 +11,22 @@ using Point = std::pair<int,int>;
 int main()
 {
   Board board;
+
+  std::ifstream ifs("../config/detect_hand.txt");
+  Board_env player1, player2;
+
+  if (!ifs.is_open()) {
+    std::cout << "can't open file";
+    return -1;
+  } else {
+    std::string s1, s2;
+    ifs >> s1 >> s2;
+    if (s1.find("Black")&& s2.find("White")) {
+    } else if (s1.find("White") && s2.find("Black")) {
+    } else {
+    }
+    std::cout << ss;
+  }
 
   Player player(board,Board_env::black);
   Computer com(board,Board_env::white);
@@ -42,6 +59,7 @@ int main()
       std::cout << "result is \n";
     }
   }
+
   Board_env winner =  board.define_winner();
   if (winner == Board_env::black)std::cout << "winner is black\n";
   else if (winner == Board_env::white)std::cout << "winner is white\n";
