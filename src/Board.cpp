@@ -13,7 +13,6 @@ Point& operator+=(Point& pos1, const Point& pos2)
   pos1.second += pos2.second;
   return pos1;
 }
-
 Point operator+(const Point& pos1, const Point& pos2)
 {
   Point ans_pos = pos1;

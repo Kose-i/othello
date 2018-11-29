@@ -6,7 +6,8 @@
 #include "Board.hpp"
 
 using Point = std::pair<int,int>;
-virtual void Hand::put_stone()
+Point Hand::define_stone()
 {
   std::cout << "undefined\n";
+  return {0,0};
 };

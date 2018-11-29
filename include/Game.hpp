@@ -1,16 +1,31 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include ""
+#include "Board.hpp"
+#include "Hand.hpp"
+
+#include <fstream>
+#include <string>
+#include <map>
+
 class Game{
-  private:
+
+  private://param
+    std::string file_path{"../config/detect_hand.txt"};
+    std::ifstream ifs;
+    std::map<Board_env, class Hand> players;
+
+  private://function
     Game(Game&);
-    operator=();
+    int operator=(Game&);
     bool is_finish();
-  public:
+
+  public://function
     Game();
+
     ~Game();
     void init();
     void run();
+
 };
 #endif

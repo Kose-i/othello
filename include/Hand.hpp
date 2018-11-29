@@ -1,17 +1,20 @@
 #ifndef OTHELLO_HAND_HPP
 #define OTHELLO_HAND_HPP
 
-#include <vector>
-#include <utility>
 #include "Board.hpp"
 
-using Point = std::pair<int,int>;
+#include <vector>
+#include <utility>
+
 class Hand
 {
+  using Point = std::pair<int,int>;
+
   public:
-    virtual Hand(class Board, const Board_env&){};
+    Hand(class Board, const Board_env& board_env) :my_board_env(board_env)
+    {};
     virtual ~Hand(){};
-    virtual void definestone();
+    virtual Point define_stone();
   private:
     Board_env my_board_env;
 };

@@ -4,16 +4,22 @@
 #include <vector>
 
 #include "Game.hpp"
+#include "Hand.hpp"
 #include "Board.hpp"
-#include "Player.hpp"
-#include "Computer.hpp"
+//#include "Player.hpp"
+//#include "Computer.hpp"
 
 int main(int argc, char** argv)
 {
-  Game game_;
-  game_.init();
-  game_.run();
-  std::cout << "end";
+  try{
+    Game game_;
+    game_.init();
+    game_.run();
+    std::cout << "game-finish\n";
+  }catch(...) {
+    std::cout << "error happen\n";
+    return -1;
+  }
   return 0;
 }
 #if 0
