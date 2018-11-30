@@ -29,9 +29,11 @@ Point Computer::define_spot()
   int best_put = 0;
   int count_enemy = -1000;
 
+  std::cout << "Computer class: deine_spot\n";
+
   for (int i = 0;i < size;++i)
   {
-    std::shared_ptr<Board> cp_board(board_state);
+    std::unique<Board> cp_board(std::make_unique(board_state));
 
     cp_board->put_stone(put_able[i] ,my_stone_color);
     cp_board->print_board();

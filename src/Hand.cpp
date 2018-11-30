@@ -7,5 +7,6 @@
 #include "Point.hpp"
 
 Hand::Hand(){};
-Point Hand::define_spot(){};
 Hand::~Hand(){};
+
+Point Hand::define_spot(){Point a;return a;};

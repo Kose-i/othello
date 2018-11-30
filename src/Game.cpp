@@ -31,16 +31,17 @@ Game::~Game()
 
 void Game::init()
 {
-  class Computer comp(board, Board_env::black);
-  class Player player(board, Board_env::white);
+//  class Computer* comp(board, Board_env::black);
+//  class Player* player(board, Board_env::white);
 
-  players[Board_env::black] = comp;
-  players[Board_env::white] = player;
+  players[Board_env::black] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
+  players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
 };
 
 void Game::run()
 {
   board->print_board();
-  Point pos = players[Board_env::black].define_spot();
-  board->put_stone(pos,Board_env::black);
+  Point pos = players[Board_env::black]->define_spot();
+  std::cout << "x :" << pos.get_x() << "y :" << pos.get_y() << '\n';
+  //board->put_stone(pos,Board_env::black);
 };

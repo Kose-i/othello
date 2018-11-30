@@ -3,6 +3,8 @@
 
 #include "Board.hpp"
 #include "Hand.hpp"
+#include "Computer.hpp"
+#include "Player.hpp"
 
 #include <fstream>
 #include <string>
@@ -14,7 +16,7 @@ class Game{
     std::string file_path{"../config/detect_hand.txt"};
     std::ifstream ifs;
     std::shared_ptr<class Board> board;
-    std::map<Board_env, class Hand> players;
+    std::map<Board_env, class Hand*> players;
 
   private://function
     Game(Game&);

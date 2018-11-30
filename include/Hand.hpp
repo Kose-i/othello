@@ -10,7 +10,8 @@ class Hand
 {
   public:
     Hand();
-    virtual Point define_spot();
     virtual ~Hand();
+
+    virtual Point define_spot();
 };
 #endif
