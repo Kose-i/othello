@@ -5,6 +5,7 @@
 #include <vector>
 #include <bitset>
 #include <utility>
+#include <memory>
 
 #include "Point.hpp"
 

@@ -3,11 +3,12 @@
 #include <iostream>
 #include <istream>
 #include <utility>
+#include <memory>
 
 #include "Board.hpp"
 #include "Point.hpp"
 
-Computer::Computer(class Board& board, const Board_env& com_color) :board_state(board), my_stone_color(com_color){};
+Computer::Computer(std::shared_ptr<class Board>& board, const Board_env& com_color) :board_state(board), my_stone_color(com_color){};
 Computer::~Computer(){};
 
 void Computer::init()
@@ -30,12 +31,12 @@ Point Computer::define_spot()
 
   for (int i = 0;i < size;++i)
   {
-    Board cp_board(board_state);
+    std::shared_ptr<Board> cp_board(board_state);
 
-    cp_board.put_stone(put_able[i] ,my_stone_color);
-    cp_board.print_board();
+    cp_board->put_stone(put_able[i] ,my_stone_color);
+    cp_board->print_board();
 
-    std::vector<Point> pos = cp_board.put_able_spot(enemy_stone_color);
+    std::vector<Point> pos = cp_board->put_able_spot(enemy_stone_color);
     for (auto& e : pos) {
       std::cout << "x is " << e.get_x() << "y is " << e.get_y() << '\n';
     }

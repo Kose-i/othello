@@ -4,6 +4,7 @@
 #include <istream>
 #include <utility>
 #include <string>
+#include <memory>
 
 #include "Board.hpp"
 #include "Point.hpp"
@@ -20,7 +21,7 @@ bool isdigit(const std::string& str)
 
 Point Player::define_spot()
 {
-  std::vector<Point> put_able = board_state.put_able_spot(my_stone_color);
+  std::vector<Point> put_able = board_state->put_able_spot(my_stone_color);
   Point pos;
   bool find = false;
   do{

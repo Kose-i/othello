@@ -13,6 +13,7 @@ class Game{
   private://param
     std::string file_path{"../config/detect_hand.txt"};
     std::ifstream ifs;
+    std::shared_ptr<class Board> board;
     std::map<Board_env, class Hand> players;
 
   private://function

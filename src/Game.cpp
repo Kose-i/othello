@@ -31,7 +31,6 @@ Game::~Game()
 
 void Game::init()
 {
-  std::shared_ptr<class Board> board;
   class Computer comp(board, Board_env::black);
   class Player player(board, Board_env::white);
 
@@ -41,4 +40,7 @@ void Game::init()
 
 void Game::run()
 {
+//  board->print_board();
+  class Board board_;
+  board_.print_board();
 };
