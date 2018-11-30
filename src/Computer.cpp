@@ -33,12 +33,12 @@ Point Computer::define_spot()
 
   for (int i = 0;i < size;++i)
   {
-    std::shared_ptr<Board> cp_board(board_state);
+    Board cp_board(*board_state);
 
-    cp_board->put_stone(put_able[i] ,my_stone_color);
-    cp_board->print_board();
+    cp_board.put_stone(put_able[i] ,my_stone_color);
+    cp_board.print_board();
 
-    std::vector<Point> pos = cp_board->put_able_spot(enemy_stone_color);
+    std::vector<Point> pos = cp_board.put_able_spot(enemy_stone_color);
     for (auto& e : pos) {
       std::cout << "x is " << e.get_x() << "y is " << e.get_y() << '\n';
     }
