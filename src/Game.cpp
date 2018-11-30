@@ -19,12 +19,24 @@ Game::Game():board{std::make_shared<Board>()} ,ifs{file_path}
   std::string s1, s2;
   std::getline(ifs, s1);
   std::getline(ifs, s2);
-  /**/
-  player_name[Board_env::black] = "computer";
-  player_name[Board_env::white] = "player1";
-  /**/
+
   if (s1.find("Black") && s2.find("White")) {
+    auto first = s1.find("Black");
+    player_name[Board_env::black] = s1.substr(first + 6);
+
+    first = s2.find("White");
+    player_name[Board_env::white] = s2.substr(first + 6);
+
   } else if (s1.find("White") && s2.find("Black")) {
+    auto first = s2.find("Black");
+    player_name[Board_env::black] = s2.substr(first + 6);
+
+    first = s1.find("White");
+    player_name[Board_env::white] = s1.substr(first + 6);
+
+  } else {
+    std::cout << "require tag\n" << "Black\n" << "white\n";
+    throw("file contents error");
   }
 };
 
