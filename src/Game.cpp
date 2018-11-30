@@ -52,6 +52,10 @@ void Game::init()
 
   players[Board_env::black] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
   players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
+  board->init();
+  players[Board_env::black]->init();
+  players[Board_env::white]->init();
+
 };
 
 void Game::run()
@@ -61,11 +65,11 @@ void Game::run()
   for (int i {};i < 2;++i) {
 
     pos = players[Board_env::black]->define_spot();
-  board->put_stone(pos,Board_env::black);
-  board->print_board();
+    board->put_stone(pos,Board_env::black);
+    board->print_board();
     pos = players[Board_env::white]->define_spot();
     board->put_stone(pos,Board_env::white);
-  board->print_board();
+    board->print_board();
   }
 };
 
