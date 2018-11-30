@@ -2,14 +2,18 @@
 #define OTHELLO_COMPUTER_HPP
 
 #include "Board.hpp"
-//#include "Hand.hpp"
+#include "Hand.hpp"
 //#include "Hyoukakansuu.hpp"
 #include <vector>
+#include <memory>
 
-class Computer// :Hand// , Hyoukakansuu
+class Computer: public Hand// , Hyoukakansuu
 {
-  friend class Board;
   private:
+    std::shared_ptr<Board> board_state;
+    Board_env my_stone_color;
+    Board_env enemy_stone_color;
+
     std::vector<std::vector<int>> costmap{
           {100,-40,20, 5, 5,20,-40,100},
           {-40,-80,-1,-1,-1,-1,-80,-40},
@@ -21,11 +25,12 @@ class Computer// :Hand// , Hyoukakansuu
           {100,-40,20, 5, 5,20,-40,100},
         };
 
+  private://function
+    void init_enemy_color();
   public:
-    Computer(class Board& , const Board_env&);
+    Computer(std::shared_ptr<Board>&, const Board_env&);
     ~Computer();
-    Board* val;
-    void define_spot();
-    Board_env computer_stone;
+    void init();
+    Point define_spot();
 };
 #endif

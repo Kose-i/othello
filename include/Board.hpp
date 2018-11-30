@@ -5,8 +5,9 @@
 #include <vector>
 #include <bitset>
 #include <utility>
+#include <memory>
 
-using Point = std::pair<int,int>;
+#include "Point.hpp"
 
 enum class Board_env
 {
@@ -17,23 +18,22 @@ enum class Board_env
 
 class Board
 {
+  private:
+    std::vector<std::vector<Board_env>> board;
+    std::vector<Point> eight_direction{{-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1}};
+
   public:
-    int get_x(const Point&)const;
-    int get_y(const Point&)const;
-    int& set_x(Point&);
-    int& set_y(Point&);
     Board();
-//    Board(const class Board*);
     ~Board();
+
+//init();
     void print_board()const;
     Board_env define_enemy_color(const Board_env&);
     std::bitset<8> judge_direction(const Point&, const Board_env&);
     void put_stone(const Point& , const Board_env&);
-    std::vector<Point> eight_direction{{-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1}};
     bool map_edge(const Point&);
-    bool move_map_edge(const Point& pos, const Point& move);
+    bool is_map_edge(const Point& pos, const Point& move);
     std::vector<Point> put_able_spot(const Board_env&);
-    std::vector<std::vector<Board_env>> board;
     Board_env define_winner();
 };
 

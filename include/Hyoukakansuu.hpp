@@ -2,9 +2,9 @@
 #define OTHELLO_HYOUKAKANSUUHPP
 
 #include <vector>
-#include <utility>
 
-using Point = std::pair<int,int>;
+#include "Point.hpp"
+
 class Hyoukakansuu
 {
   private:

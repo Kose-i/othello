@@ -3,6 +3,7 @@
 This is othello repository
 
 ## File constitution
+
 | class | configure |
 ----|----
 | Game | Othello game class |
@@ -10,10 +11,11 @@ This is othello repository
 | Computer | computer class |
 | Hyoukakansuu | for computer class |
 | Player | player class |
+| Point | position class |
 
 ## How to Use
 
-`config`内の`detect_hand.txt`ファイルを編集して,`player` `computer`の色を決めます.
+`config`内の`detect_hand.txt`ファイルを編集して,`Black` `White`のプレーヤーの名前を決めます.
 
 `mkdir build`
 

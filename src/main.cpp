@@ -1,13 +1,6 @@
 #include <iostream>
-#include <fstream>
-#include <utility>
-#include <vector>
 
 #include "Game.hpp"
-#include "Hand.hpp"
-#include "Board.hpp"
-//#include "Player.hpp"
-//#include "Computer.hpp"
 
 int main(int argc, char** argv)
 {
@@ -15,34 +8,19 @@ int main(int argc, char** argv)
     Game game_;
     game_.init();
     game_.run();
-    std::cout << "game-finish\n";
+    game_.result();
   }catch(...) {
     std::cout << "error happen\n";
     return -1;
   }
   return 0;
 }
+
 #if 0
 using Point = std::pair<int,int>;
 int main()
 {
   Board board;
-
-  std::ifstream ifs("../config/detect_hand.txt");
-  Board_env player1, player2;
-
-  if (!ifs.is_open()) {
-    std::cout << "can't open file";
-    return -1;
-  } else {
-    std::string s1, s2;
-    ifs >> s1 >> s2;
-    if (s1.find("Black")&& s2.find("White")) {
-    } else if (s1.find("White") && s2.find("Black")) {
-    } else {
-    }
-    std::cout << ss;
-  }
 
   Player player(board,Board_env::black);
   Computer com(board,Board_env::white);

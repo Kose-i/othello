@@ -2,15 +2,24 @@
 #define Point_hpp
 
 class Point{
+
   private:
     int x,y;
+
   public:
     Point();
-    int get_x();
-    int& set_x();
-    int get_y();
-    int& set_y();
+    Point(const int&,const int&);
+    ~Point();
 
+    int get_x()const;
+    int get_y()const;
+
+    void set_x(const int&);
+    void set_y(const int&);
+
+    const Point operator+(const Point&);
+    Point& operator+=(const Point&);
+    bool operator==(const Point&);
 };
 
 #endif
