@@ -10,7 +10,7 @@
 #include <map>
 #include <memory>
 
-Game::Game():board{new Board} ,ifs{file_path}
+Game::Game():board{std::make_shared<Board>()} ,ifs{file_path}
 {
   if (!ifs.is_open()) {
     std::cout << "cant open:" << file_path << '\n';
