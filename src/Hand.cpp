@@ -9,4 +9,4 @@
 Hand::Hand(){};
 Hand::~Hand(){};
 
-Point Hand::define_spot(){Point a;return a;};
+Point Hand::define_spot(){return Point();};
