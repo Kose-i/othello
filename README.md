@@ -15,7 +15,7 @@ This is othello repository
 
 ## How to Use
 
-`config`内の`detect_hand.txt`ファイルを編集して,`player` `computer`の色を決めます.
+`config`内の`detect_hand.txt`ファイルを編集して,`Black` `White`のプレーヤーの名前を決めます.
 
 `mkdir build`
 
