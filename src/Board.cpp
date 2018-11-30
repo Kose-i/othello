@@ -113,6 +113,10 @@ Board_env Board::define_enemy_color(const Board_env& my_color)
 
 //std::vector<std::vector<Board_env>> Board::board;
 
+Board_env Board::get_board_env(const Point& pos)
+{
+  return board[pos.get_y()][pos.get_x()];
+}
 std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_color)
 {
   std::bitset<8> judge("11111111");

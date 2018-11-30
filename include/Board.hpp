@@ -31,12 +31,14 @@ class Board
 
     void init();
     void print_board()const;
-    Board_env define_enemy_color(const Board_env&);
     std::bitset<8> judge_direction(const Point&, const Board_env&);
     void put_stone(const Point& , const Board_env&);
-    bool map_edge(const Point&);
     std::vector<Point> put_able_spot(const Board_env&);
     Board_env define_winner();
+    Board_env get_board_env(const Point&);
+
+    bool map_edge(const Point&);
+    Board_env define_enemy_color(const Board_env&);
 };
 
 #endif
