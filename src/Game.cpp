@@ -55,7 +55,7 @@ void Game::init()
   }
 
   if(player_name[Board_env::white].find("computer") != std::string::npos) {
-    players[Board_env::white] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
+    players[Board_env::white] = dynamic_cast<Hand*>(new Computer(board,Board_env::white));
   } else {
     players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
   }
