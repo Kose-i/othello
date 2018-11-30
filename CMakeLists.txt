@@ -11,4 +11,5 @@ src/Hand.cpp
 src/Computer.cpp
 src/Point.cpp
 src/Player.cpp
+src/Hyoukakansuu.cpp
 )
