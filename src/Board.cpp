@@ -8,16 +8,19 @@
 #include "Point.hpp"
 
 Board::Board()  :board(8, std::vector<Board_env>(8,Board_env::blank))
-{
-  board[3][3] = board[4][4] = Board_env::white;
-  board[3][4] = board[4][3] = Board_env::black;
-};
+{};
 
 /*
 Board::Board(class Board* cp) : board(&cp)
 {};
 */
 Board::~Board(){};
+
+void Board::init()
+{
+  board[3][3] = board[4][4] = Board_env::white;
+  board[3][4] = board[4][3] = Board_env::black;
+}
 
 void Board::print_board() const
 {
