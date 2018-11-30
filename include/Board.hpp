@@ -21,9 +21,9 @@ class Board
   private:
     std::vector<std::vector<Board_env>> board;
     std::vector<Point> eight_direction{{-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1}};
+
   public:
     Board();
-//    Board(const class Board*);
     ~Board();
 
 //init();

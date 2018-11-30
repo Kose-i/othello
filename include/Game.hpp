@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <array>
 
 class Game{
 
@@ -17,6 +18,7 @@ class Game{
     std::ifstream ifs;
     std::shared_ptr<class Board> board;
     std::map<Board_env, class Hand*> players;
+    std::map<Board_env, std::string> player_name;
 
   private://function
     Game(Game&);
@@ -29,6 +31,7 @@ class Game{
     ~Game();
     void init();
     void run();
+    void result();
 
 };
 #endif

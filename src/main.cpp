@@ -1,13 +1,6 @@
 #include <iostream>
-#include <fstream>
-#include <utility>
-#include <vector>
 
 #include "Game.hpp"
-#include "Hand.hpp"
-#include "Board.hpp"
-//#include "Player.hpp"
-//#include "Computer.hpp"
 
 int main(int argc, char** argv)
 {
@@ -15,7 +8,7 @@ int main(int argc, char** argv)
     Game game_;
     game_.init();
     game_.run();
-    std::cout << "game-finish\n";
+    game_.result();
   }catch(...) {
     std::cout << "error happen\n";
     return -1;
