@@ -22,13 +22,11 @@ Board::~Board(){};
 void Board::print_board() const
 {
   std::cout << " 01234567 -> x\n";
-  for (int i = 0;i < 8;++i)
-  {
+  for (int i {};i < 8;++i) {
     std::cout << i;
-    for (int j = 0;j < 8;++j)
-    {
-      switch (board[i][j])
-      {
+    for (int j {};j < 8;++j) {
+
+      switch (board[i][j]) {
         case Board_env::black:
           std::cout << "B";
           break;
@@ -39,6 +37,7 @@ void Board::print_board() const
           std::cout << "+";
           break;
       }
+
     }
     std::cout <<  '\n';
   }
@@ -145,12 +144,10 @@ std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_col
 
 Board_env Board::define_winner()
 {
-  int black_count = 0;
-  int white_count = 0;
-  for (const auto& e : board)
-  {
-    for (const auto& f : e)
-    {
+  int black_count{0};
+  int white_count{0};
+  for (const auto& e : board) {
+    for (const auto& f : e) {
       if (f == Board_env::black)++black_count;
       else if (f == Board_env::white)++white_count;
     }

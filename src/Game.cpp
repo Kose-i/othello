@@ -10,7 +10,7 @@
 #include <map>
 #include <memory>
 
-Game::Game():ifs{file_path}
+Game::Game():board{new Board} ,ifs{file_path}
 {
   if (!ifs.is_open()) {
     std::cout << "cant open:" << file_path << '\n';
@@ -40,7 +40,7 @@ void Game::init()
 
 void Game::run()
 {
-//  board->print_board();
-  class Board board_;
-  board_.print_board();
+  board->print_board();
+  Point pos = players[Board_env::black].define_spot();
+  board->put_stone(pos,Board_env::black);
 };
