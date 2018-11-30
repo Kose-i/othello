@@ -47,11 +47,17 @@ Game::~Game()
 
 void Game::init()
 {
-//  class Computer* comp(board, Board_env::black);
-//  class Player* player(board, Board_env::white);
 
-  players[Board_env::black] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
-  players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
+  if(player_name[Board_env::black].find("computer") != std::string::npos) {
+    players[Board_env::black] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
+  } else {
+    players[Board_env::black] = dynamic_cast<Hand*>(new Player(board,Board_env::black));
+  }
+  if(player_name[Board_env::white].find("computer") != std::string::npos) {
+    players[Board_env::white] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
+  } else {
+    players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
+  }
 };
 
 void Game::run()
