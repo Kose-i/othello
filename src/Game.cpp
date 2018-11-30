@@ -69,13 +69,28 @@ void Game::run()
 {
   board->print_board();
   Point pos;
-  for (int i {};i < 2;++i) {
+  Point path_pos(-1,-1);
+  bool path_find = false;
+  for (;true;) {
 
+  
     pos = players[Board_env::black]->define_spot();
-    board->put_stone(pos,Board_env::black);
+    if (pos != path_pos) {
+      board->put_stone(pos,Board_env::black);
+      path_find = false;
+    } else {
+      if (path_find == true) break;
+      else path_find = true;
+    }
     board->print_board();
     pos = players[Board_env::white]->define_spot();
-    board->put_stone(pos,Board_env::white);
+    if (pos != path_pos) {
+      board->put_stone(pos,Board_env::white);
+      path_find = false;
+    } else {
+      if (path_find == true) break;
+      else path_find = true;
+    }
     board->print_board();
   }
 };
@@ -83,6 +98,9 @@ void Game::run()
 void Game::result()
 {
   Board_env winner_stone = board->define_winner();
+
+  std::cout << "result---\n";
+  board->print_board();
 
   if (winner_stone == Board_env::blank) {
     std::cout << "draw\n";

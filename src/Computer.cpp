@@ -26,6 +26,9 @@ Point Computer::define_spot()
 {
   std::vector<Point> put_able = board_state->put_able_spot(my_stone_color);
   int size = put_able.size();
+  if (size == 0) {
+    return Point(-1,-1);
+  }
   int best_put = 0;
   int count_enemy = -1000;
 
@@ -36,7 +39,7 @@ Point Computer::define_spot()
     Board cp_board(*board_state);
 
     cp_board.put_stone(put_able[i] ,my_stone_color);
-    cp_board.print_board();
+    //cp_board.print_board();
 
     std::vector<Point> pos = cp_board.put_able_spot(enemy_stone_color);
     for (auto& e : pos) {

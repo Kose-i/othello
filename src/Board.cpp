@@ -147,8 +147,8 @@ std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_col
 
 Board_env Board::define_winner()
 {
-  int black_count{0};
-  int white_count{0};
+  int black_count{};
+  int white_count{};
   for (const auto& e : board) {
     for (const auto& f : e) {
       if (f == Board_env::black)++black_count;
