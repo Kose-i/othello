@@ -1,7 +1,7 @@
 # othello
 
 This is othello repository
-[comment]:
+[comment]:#
 
 ## File constitution
 
@@ -9,7 +9,7 @@ This is othello repository
 ----|----
 | Game | Othello game class |
 | Hand | abstracle class |
-| Computer | computer class |
+| Computer | computer class with using costmap|
 | Hyoukakansuu | for computer class |
 | Player | player class |
 | Point | position class |

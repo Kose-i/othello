@@ -97,24 +97,25 @@ void Game::run()
 
 void Game::result()
 {
-  Board_env winner_stone = board->define_winner();
-
   std::cout << "result---\n";
   board->print_board();
+
+  Board_env winner_stone = board->define_winner();
 
   if (winner_stone == Board_env::blank) {
     std::cout << "draw\n";
   } else if (winner_stone == Board_env::black) {
 
     std::cout << "winner is black\n";
-    std::cout << player_name[Board_env::black] << '\n';
+    std::cout << player_name[winner_stone] << '\n';
 
   } else if (winner_stone == Board_env::white) {
 
     std::cout << "winner is white\n";
-    std::cout << player_name[Board_env::white] << '\n';
+    std::cout << player_name[winner_stone] << '\n';
 
   } else {
+    std::cout << "no winner no draw";
     throw("no winner no draw");
   }
 }
