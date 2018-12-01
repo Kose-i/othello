@@ -24,7 +24,7 @@ This is othello repository
 
 `config`内の`detect_hand.txt`ファイルを編集して,`Black` `White`のプレーヤーの名前を決めます.
 
-###プレーヤー名にcomputerという文字列を指定していた場合,computerが起動します.
+### プレーヤー名にcomputerという文字列を指定していた場合,computerが起動します.
 
 `mkdir build`
 
