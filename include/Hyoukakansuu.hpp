@@ -27,5 +27,6 @@ class Hyoukakansuu
         };
   public:
     long calc_cost(Board&, const Board_env&, const Board_env&);
+    long calc_costmap(Board&, const Board_env&, const Board_env&);
 };
 #endif
