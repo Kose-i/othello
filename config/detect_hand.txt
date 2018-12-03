@@ -1,2 +1,2 @@
-Black- computer
-White- player
+Black- computer1
+White- computer2

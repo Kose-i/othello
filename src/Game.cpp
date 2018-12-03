@@ -54,29 +54,51 @@ void Game::init()
     players[Board_env::black] = dynamic_cast<Hand*>(new Player(board,Board_env::black));
   }
   if(player_name[Board_env::white].find("computer") != std::string::npos) {
-    players[Board_env::white] = dynamic_cast<Hand*>(new Computer(board,Board_env::black));
+    players[Board_env::white] = dynamic_cast<Hand*>(new Computer(board,Board_env::white));
   } else {
     players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
   }
+  board->init();
+  players[Board_env::black]->init();
+  players[Board_env::white]->init();
+
 };
 
 void Game::run()
 {
   board->print_board();
   Point pos;
-  for (int i {};i < 2;++i) {
+  Point path_pos(-1,-1);
+  bool path_find = false;
+  for (;true;) {
 
+  
     pos = players[Board_env::black]->define_spot();
-  board->put_stone(pos,Board_env::black);
-  board->print_board();
+    if (pos != path_pos) {
+      board->put_stone(pos,Board_env::black);
+      path_find = false;
+    } else {
+      if (path_find == true) break;
+      else path_find = true;
+    }
+    board->print_board();
     pos = players[Board_env::white]->define_spot();
-    board->put_stone(pos,Board_env::white);
-  board->print_board();
+    if (pos != path_pos) {
+      board->put_stone(pos,Board_env::white);
+      path_find = false;
+    } else {
+      if (path_find == true) break;
+      else path_find = true;
+    }
+    board->print_board();
   }
 };
 
 void Game::result()
 {
+  std::cout << "result---\n";
+  board->print_board();
+
   Board_env winner_stone = board->define_winner();
 
   if (winner_stone == Board_env::blank) {
@@ -84,14 +106,15 @@ void Game::result()
   } else if (winner_stone == Board_env::black) {
 
     std::cout << "winner is black\n";
-    std::cout << player_name[Board_env::black] << '\n';
+    std::cout << player_name[winner_stone] << '\n';
 
   } else if (winner_stone == Board_env::white) {
 
     std::cout << "winner is white\n";
-    std::cout << player_name[Board_env::white] << '\n';
+    std::cout << player_name[winner_stone] << '\n';
 
   } else {
+    std::cout << "no winner no draw";
     throw("no winner no draw");
   }
 }

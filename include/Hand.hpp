@@ -12,6 +12,8 @@ class Hand
     Hand();
     virtual ~Hand();
 
+    virtual void init();
+
     virtual Point define_spot();
 };
 #endif

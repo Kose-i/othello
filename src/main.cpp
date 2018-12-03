@@ -4,12 +4,12 @@
 
 int main(int argc, char** argv)
 {
-  try{
+  try {
     Game game_;
     game_.init();
     game_.run();
     game_.result();
-  }catch(...) {
+  } catch(...) {
     std::cout << "error happen\n";
     return -1;
   }

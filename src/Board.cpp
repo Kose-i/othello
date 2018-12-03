@@ -8,16 +8,19 @@
 #include "Point.hpp"
 
 Board::Board()  :board(8, std::vector<Board_env>(8,Board_env::blank))
-{
-  board[3][3] = board[4][4] = Board_env::white;
-  board[3][4] = board[4][3] = Board_env::black;
-};
+{};
 
 /*
 Board::Board(class Board* cp) : board(&cp)
 {};
 */
 Board::~Board(){};
+
+void Board::init()
+{
+  board[3][3] = board[4][4] = Board_env::white;
+  board[3][4] = board[4][3] = Board_env::black;
+}
 
 void Board::print_board() const
 {
@@ -110,6 +113,10 @@ Board_env Board::define_enemy_color(const Board_env& my_color)
 
 //std::vector<std::vector<Board_env>> Board::board;
 
+Board_env Board::get_board_env(const Point& pos)
+{
+  return board[pos.get_y()][pos.get_x()];
+}
 std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_color)
 {
   std::bitset<8> judge("11111111");
@@ -144,8 +151,8 @@ std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_col
 
 Board_env Board::define_winner()
 {
-  int black_count{0};
-  int white_count{0};
+  int black_count{};
+  int white_count{};
   for (const auto& e : board) {
     for (const auto& f : e) {
       if (f == Board_env::black)++black_count;

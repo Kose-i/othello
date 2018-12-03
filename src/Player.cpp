@@ -11,6 +11,7 @@
 
 Player::Player(std::shared_ptr<Board>& board, const Board_env& player_color) :board_state(board), my_stone_color(player_color){};
 Player::~Player(){};
+void Player::init(){};
 
 bool isdigit(const std::string& str)
 {
@@ -22,6 +23,9 @@ bool isdigit(const std::string& str)
 Point Player::define_spot()
 {
   std::vector<Point> put_able = board_state->put_able_spot(my_stone_color);
+  if(put_able.size() == 0) {
+    return Point(-1,-1);
+  }
   Point pos;
   bool find = false;
   do{

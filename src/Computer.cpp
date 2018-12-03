@@ -26,8 +26,11 @@ Point Computer::define_spot()
 {
   std::vector<Point> put_able = board_state->put_able_spot(my_stone_color);
   int size = put_able.size();
+  if (size == 0) {
+    return Point(-1,-1);
+  }
   int best_put = 0;
-  int count_enemy = -1000;
+  int cost_minimum = -1000;
 
   std::cout << "Computer class: deine_spot\n";
 
@@ -36,17 +39,11 @@ Point Computer::define_spot()
     Board cp_board(*board_state);
 
     cp_board.put_stone(put_able[i] ,my_stone_color);
-    cp_board.print_board();
+    //cp_board.print_board();
 
-    std::vector<Point> pos = cp_board.put_able_spot(enemy_stone_color);
-    for (auto& e : pos) {
-      std::cout << "x is " << e.get_x() << "y is " << e.get_y() << '\n';
-    }
-    int cost = 0;
-    if((cost = costmap[put_able[i].get_y()][put_able[i].get_x()] - 5 * pos.size()) > count_enemy)
-    {
-      count_enemy =cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
-      std::cout <<"this cost is "<< cost << '\n';
+    int cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
+    if(cost > cost_minimum) {
+      cost_minimum = cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
       best_put = i;
     }
   }

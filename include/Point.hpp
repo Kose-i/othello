@@ -20,6 +20,7 @@ class Point{
     const Point operator+(const Point&);
     Point& operator+=(const Point&);
     bool operator==(const Point&);
+    bool operator!=(const Point&);
 };
 
 #endif
