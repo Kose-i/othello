@@ -10,6 +10,7 @@
 #include <string>
 #include <map>
 #include <array>
+#include <memory>
 
 class Game{
 
@@ -17,7 +18,7 @@ class Game{
     std::string file_path{"../config/detect_hand.txt"};
     std::ifstream ifs;
     std::shared_ptr<class Board> board;
-    std::map<Board_env, class Hand*> players;
+    std::map<Board_env, std::unique_ptr<class Hand>> players;
     std::map<Board_env, std::string> player_name;
 
   private://function

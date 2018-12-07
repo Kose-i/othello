@@ -49,14 +49,14 @@ void Game::init()
 {
 
   if(player_name[Board_env::black].find("computer") != std::string::npos) {
-    players[Board_env::black] = new Computer(board,Board_env::black);
+    players[Board_env::black] = std::make_unique<Computer>(board,Board_env::black);
   } else {
-    players[Board_env::black] = new Player(board,Board_env::black);
+    players[Board_env::black] = std::make_unique<Player>(board,Board_env::black);
   }
   if(player_name[Board_env::white].find("computer") != std::string::npos) {
-    players[Board_env::white] = dynamic_cast<Hand*>(new Computer(board,Board_env::white));
+    players[Board_env::white] =  std::make_unique<Computer>(board,Board_env::white);
   } else {
-    players[Board_env::white] = dynamic_cast<Hand*>(new Player(board, Board_env::white));
+    players[Board_env::white] = std::make_unique<Player>(board, Board_env::white);
   }
   board->init();
   players[Board_env::black]->init();
