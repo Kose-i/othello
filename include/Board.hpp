@@ -1,11 +1,11 @@
 #ifndef OTHELLO_BOARD_HPP
 #define OTHELLO_BOARD_HPP
 
-#include <iostream>
-#include <vector>
 #include <bitset>
-#include <utility>
+#include <iostream>
 #include <memory>
+#include <utility>
+#include <vector>
 
 #include "Point.hpp"
 
@@ -30,15 +30,17 @@ class Board
     ~Board();
 
     void init();
-    void print_board()const;
-    std::bitset<8> judge_direction(const Point&, const Board_env&) const;
     void put_stone(const Point& , const Board_env&);
+
+    void print_board()const;
     std::vector<Point> put_able_spot(const Board_env&)const;
-    Board_env define_winner()const;
+    bool map_edge(const Point&)const;
+    std::bitset<8> judge_direction(const Point&, const Board_env&) const;
     Board_env get_board_env(const Point&);
 
-    bool map_edge(const Point&)const;
     Board_env define_enemy_color(const Board_env&)const;
+    Board_env define_winner()const;
+
 };
 
 #endif

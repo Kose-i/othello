@@ -20,14 +20,14 @@ Game::Game():board{std::make_shared<Board>()} ,ifs{file_path}
   std::getline(ifs, s1);
   std::getline(ifs, s2);
 
-  if (s1.find("Black") && s2.find("White")) {
+  if (s1.find("Black") != std::string::npos && s2.find("White") != std::string::npos) {
     auto first = s1.find("Black");
     player_name[Board_env::black] = s1.substr(first + 6);
 
     first = s2.find("White");
     player_name[Board_env::white] = s2.substr(first + 6);
 
-  } else if (s1.find("White") && s2.find("Black")) {
+  } else if (s1.find("White") != std::string::npos && s2.find("Black") != std::string::npos) {
     auto first = s2.find("Black");
     player_name[Board_env::black] = s2.substr(first + 6);
 

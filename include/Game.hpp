@@ -2,15 +2,15 @@
 #define Game_hpp
 
 #include "Board.hpp"
-#include "Hand.hpp"
 #include "Computer.hpp"
+#include "Hand.hpp"
 #include "Player.hpp"
 
-#include <fstream>
-#include <string>
-#include <map>
 #include <array>
+#include <fstream>
+#include <map>
 #include <memory>
+#include <string>
 
 class Game{
 
@@ -27,9 +27,10 @@ class Game{
     bool is_finish();
 
   public://function
-    Game();
 
+    Game();
     ~Game();
+
     void init();
     void run();
     void result();
