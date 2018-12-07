@@ -21,6 +21,6 @@ class Player: public Hand
     ~Player();
     void init();
     void init_enemy_stone();
-    Point define_spot();
+    virtual Point define_spot();
 };
 #endif

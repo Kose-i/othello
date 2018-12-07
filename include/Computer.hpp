@@ -20,6 +20,6 @@ class Computer: public Hand ,private Hyoukakansuu
     Computer(std::shared_ptr<Board>&, const Board_env&);
     ~Computer();
     void init();
-    Point define_spot();
+    virtual Point define_spot();
 };
 #endif
