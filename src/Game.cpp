@@ -35,7 +35,7 @@ Game::Game():board{std::make_shared<Board>()} ,ifs{file_path}
     player_name[Board_env::white] = s1.substr(first + 6);
 
   } else {
-    std::cout << "require tag\n" << "Black\n" << "white\n";
+    std::cout << "require tag\n" << "Black [name]\n" << "White [name]\n";
     throw("file contents error");
   }
 };
@@ -58,6 +58,7 @@ void Game::init()
   } else {
     players[Board_env::white] = std::make_unique<Player>(board, Board_env::white);
   }
+
   board->init();
   players[Board_env::black]->init();
   players[Board_env::white]->init();

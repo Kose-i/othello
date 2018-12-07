@@ -9,7 +9,8 @@
 #include "Board.hpp"
 #include "Point.hpp"
 
-Player::Player(std::shared_ptr<Board>& board, const Board_env& player_color) :board_state(board), my_stone_color(player_color){};
+Player::Player(std::shared_ptr<Board>& board, const Board_env& player_color) :board_state(board), my_stone_color(player_color)
+{};
 Player::~Player(){};
 void Player::init(){};
 

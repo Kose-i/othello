@@ -4,12 +4,12 @@ project(othello LANGUAGES CXX)
 include_directories(include)
 
 add_executable(main
-src/main.cpp
-src/Game.cpp
-src/Board.cpp
-src/Hand.cpp
-src/Computer.cpp
-src/Point.cpp
-src/Player.cpp
-src/Hyoukakansuu.cpp
+    src/main.cpp
+    src/Game.cpp
+    src/Board.cpp
+    src/Hand.cpp
+    src/Computer.cpp
+    src/Point.cpp
+    src/Player.cpp
+    src/Hyoukakansuu.cpp
 )
