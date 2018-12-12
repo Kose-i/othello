@@ -39,11 +39,13 @@ void Board::put_stone(const Point& pos ,const Board_env& my_color)
 void Board::print_board() const
 {
   std::cout << " 01234567 -> x\n";
-  for (int i {};i < 8;++i) {
-    std::cout << i;
-    for (int j {};j < 8;++j) {
+  auto y = 0;
+  for (auto e : board) {
+    std::cout << y;
+    ++y;
+    for (auto f : e) {
 
-      switch (board[i][j]) {
+      switch (f) {
         case Board_env::black:
           std::cout << "B";
           break;

@@ -1,2 +1,2 @@
-ck- tamu1
-hite- computer2
+Black- computer1
+White- computer2
