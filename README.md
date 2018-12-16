@@ -2,7 +2,7 @@
 
 This is othello repository
 
-[comment]:()
+[comment]: # ()
 
 ## File constitution
 
@@ -15,13 +15,13 @@ This is othello repository
 | Player | player class |
 | Point | position class |
 
-[comment]:(`csvdir`を設置後,簡易的なAIの実装に移動.)
+[comment]: # (`csvdir`を設置後,簡易的なAIの実装に移動.)
 
 ### Computer class
 
 *computer* は他クラスを継承し,継承したクラスが持つ関数**calc_cost**を実行してコストの最小値となるオセロの場所を選択します.
 
-[comment]:()
+[comment]:# (calc costが最大値となる箇所をオセロの場所として選択する)
 
 ## How to Use
 
