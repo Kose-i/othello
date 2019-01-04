@@ -18,8 +18,8 @@ class Computer: public Hand ,private Hyoukakansuu
     void init_enemy_color();
   public:
     Computer(std::shared_ptr<Board>&, const Board_env&);
-    ~Computer();
-    void init();
-    virtual Point define_spot();
+    virtual ~Computer();
+    void init()override;
+    virtual Point define_spot()override;
 };
 #endif

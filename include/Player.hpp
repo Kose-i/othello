@@ -18,9 +18,9 @@ class Player: public Hand
     Board_env enemy_stone_color;
   public:
     Player(std::shared_ptr<Board>&, const Board_env&);
-    ~Player();
-    void init();
+    virtual ~Player();
+    void init()override;
     void init_enemy_stone();
-    virtual Point define_spot();
+    virtual Point define_spot()override;
 };
 #endif
