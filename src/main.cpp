@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     game_.run();
     game_.result();
   } catch(...) {
-    std::cout << "error happen\n";
+    std::cerr << "error happen\n";
     return -1;
   }
   return 0;
