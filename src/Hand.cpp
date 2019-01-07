@@ -9,6 +9,6 @@
 Hand::Hand(){};
 Hand::~Hand(){};
 
-void Hand::init(){};
+//void Hand::init(){};
 
-Point Hand::define_spot(){return Point();};
+//Point Hand::define_spot(){return Point();};
