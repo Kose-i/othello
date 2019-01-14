@@ -1,2 +1,2 @@
 laungage: c++
-script: cmake && make
+script: cmake . && make
