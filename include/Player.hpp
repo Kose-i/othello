@@ -1,7 +1,6 @@
 #ifndef OTHELLO_PLAYER_HPP
 #define OTHELLO_PLAYER_HPP
 
-#include <iostream>
 #include <vector>
 #include <utility>
 #include <memory>
