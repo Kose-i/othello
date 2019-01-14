@@ -8,14 +8,14 @@ Point::Point(const int& x_, const int& y_): x(x_), y(y_)
 
 Point::~Point(){};
 
-int Point::get_x()const{
+const int Point::get_x()const{
   return x;
 };
 void Point::set_x(const int& x_){
   x = x_;
 };
 
-int Point::get_y()const{
+const int Point::get_y()const{
   return y;
 };
 void Point::set_y(const int& y_){

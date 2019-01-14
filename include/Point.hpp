@@ -11,8 +11,8 @@ class Point{
     Point(const int&,const int&);
     ~Point();
 
-    int get_x()const;
-    int get_y()const;
+    const int get_x()const;
+    const int get_y()const;
 
     void set_x(const int&);
     void set_y(const int&);
