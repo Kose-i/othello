@@ -1,2 +1,11 @@
-laungage: c++
-script: cmake . && make
+laungage: cpp
+compiler:
+  - clang 
+  - g++
+install: export CXX="g++-5"
+
+apt:
+  package:
+    - g++-5
+
+script: cmake . && make -std=c++11
