@@ -17,10 +17,10 @@ class Point{
     void set_x(const int&);
     void set_y(const int&);
 
-    const Point operator+(const Point&);
-    Point& operator+=(const Point&);
-    bool operator==(const Point&);
-    bool operator!=(const Point&);
+    const Point operator+(const Point&)const;
+    const Point& operator+=(const Point&);
+    bool operator==(const Point&)const;
+    bool operator!=(const Point&)const;
 };
 
 #endif

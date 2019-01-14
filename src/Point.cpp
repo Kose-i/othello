@@ -22,7 +22,7 @@ void Point::set_y(const int& y_){
   y = y_;
 };
 
-const Point Point::operator+(const Point& pos)
+const Point Point::operator+(const Point& pos)const
 {
   Point ans{};
   int t_x, t_y;
@@ -33,17 +33,17 @@ const Point Point::operator+(const Point& pos)
   return ans;
 }
 
-Point& Point::operator+=(const Point& pos)
+const Point& Point::operator+=(const Point& pos)
 {
   set_x(x + pos.get_x());
   set_y(y + pos.get_y());
   return *this;
 }
-bool Point::operator==(const Point& pos)
+bool Point::operator==(const Point& pos)const
 {
   return (x == pos.get_x() && y == pos.get_y());
 }
-bool Point::operator!=(const Point& pos)
+bool Point::operator!=(const Point& pos)const
 {
   return !(*this == pos);
 }
