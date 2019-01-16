@@ -41,8 +41,8 @@ Point Computer::define_spot()
     cp_board.put_stone(put_able[i] ,my_stone_color);
     //cp_board.print_board();
 
-    int cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
-    if(cost > cost_minimum) {
+    long cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
+    if(cost < cost_minimum) {
       cost_minimum = cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
       best_put = i;
     }
