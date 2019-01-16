@@ -25,16 +25,16 @@ void Computer::init_enemy_color()
 Point Computer::define_spot()
 {
   std::vector<Point> put_able = board_state->put_able_spot(my_stone_color);
-  int size = put_able.size();
+  auto size = put_able.size();
   if (size == 0) {
     return Point(-1,-1);
   }
-  int best_put = 0;
-  int cost_minimum = -1000;
+  auto best_put = 0;
+  auto cost_minimum = -1000;
 
   std::cout << "Computer class: deine_spot\n";
 
-  for (int i = 0;i < size;++i)
+  for (auto i = 0;i < size;++i)
   {
     Board cp_board(*board_state);
 
