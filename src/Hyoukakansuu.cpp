@@ -5,7 +5,7 @@
 #include "Board.hpp"
 #include "Point.hpp"
 
-long Hyoukakansuu::calc_cost(Board& cp_board, const Board_env& my_stone, const Board_env& enemy_stone)
+long Hyoukakansuu::calc_cost(const Board& cp_board, const Board_env& my_stone, const Board_env& enemy_stone)
 {
   std::vector<Point> pos_putable = cp_board.put_able_spot(enemy_stone);
 
@@ -24,7 +24,7 @@ long Hyoukakansuu::calc_cost(Board& cp_board, const Board_env& my_stone, const B
   return (10*cost_from_enemy_put_able_spot - 3*cost_from_my_put_able_spot - cost_from_costmap);
 };
 
-long Hyoukakansuu::calc_costmap(Board& cp_board, const Board_env& my_stone, const Board_env& enemy_stone)
+long Hyoukakansuu::calc_costmap(const Board& cp_board, const Board_env& my_stone, const Board_env& enemy_stone)
 {
   long cost_from_costmap {};
   Point pos;

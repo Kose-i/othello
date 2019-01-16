@@ -36,7 +36,7 @@ class Board
     std::vector<Point> put_able_spot(const Board_env&)const;
     bool map_edge(const Point&)const;
     std::bitset<8> judge_direction(const Point&, const Board_env&) const;
-    Board_env get_board_env(const Point&);
+    Board_env get_board_env(const Point&)const;
 
     Board_env define_enemy_color(const Board_env&)const;
     Board_env define_winner()const;

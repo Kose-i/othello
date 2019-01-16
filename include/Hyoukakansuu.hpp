@@ -26,7 +26,7 @@ class Hyoukakansuu
           {100,-40,20, 5, 5,20,-40,100},
         };
   public:
-    long calc_cost(Board&, const Board_env&, const Board_env&);
-    long calc_costmap(Board&, const Board_env&, const Board_env&);
+    long calc_cost(const Board&, const Board_env&, const Board_env&);
+    long calc_costmap(const Board&, const Board_env&, const Board_env&);
 };
 #endif

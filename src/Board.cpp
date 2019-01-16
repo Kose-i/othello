@@ -86,7 +86,7 @@ bool Board::map_edge(const Point& pos) const
   return (pos.get_x() == 0 || pos.get_x() == 7) || (pos.get_y() == 0 || pos.get_y() == 7);
 }
 
-Board_env Board::get_board_env(const Point& pos)
+Board_env Board::get_board_env(const Point& pos) const
 {
   return board[pos.get_y()][pos.get_x()];
 }
