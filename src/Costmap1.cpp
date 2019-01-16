@@ -17,16 +17,17 @@
     Param_type param7;
     Param_type param8;
     Param_type param9;
+    Param_type param10;
 
     *{1,2,4,5
     *{2,3,6,7
     *{4,6,8,9
-    *{5,7,9
+    *{5,7,9,10
 */
 
 Costmap1::Costmap1()
 {
-  init_param("../config/param_for_costmap/test.cpp");
+  init_param("../config/param_for_costmap/test.txt");
 }
 Costmap1::Costmap1(const std::string& filename)
 {
@@ -36,11 +37,29 @@ void Costmap1::init_param(const std::string& filename)
 {
   std::ifstream ifs;
   ifs.open(filename);
-  if (ifs.is_open()) {
+  if (!ifs.is_open()) {
     throw("cant open %s",filename);
   }
+  ifs >> param1;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param2;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param3;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param4;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param5;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param6;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param7;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param8;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param9;
+  if (ifs.eof())throw("paramefile[%s] is not",filename);
+  ifs >> param10;
 
-  ifs >> param1 >> param2 >> param3 >> param4 >> param5 >> param6 >> param7 >> param8 >> param9;
   ifs.close();
 }
 long Costmap1::calc_cost(const Board& cp_board, const Board_env& my_stone, const Board_env& enemy_stone)
@@ -90,5 +109,8 @@ long Costmap1::calc_costmap(const Point& pos)
   }
   for (auto x : pos_9) {
     if (x == pos) return param9;
+  }
+  for (auto x : pos_10) {
+    if (x == pos) return param10;
   }
 };

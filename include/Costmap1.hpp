@@ -24,11 +24,12 @@ class Costmap1
     Param_type param7;
     Param_type param8;
     Param_type param9;
+    Param_type param10;
     /*
     *{1,2,4,5
     *{2,3,6,7
     *{4,6,8,9
-    *{5,7,9
+    *{5,7,9,10
     */
   private:
     std::vector<Point> pos_1{{0,0},{0,7},{7,0},{7,7}};
@@ -61,6 +62,9 @@ class Costmap1
     std::vector<Point> pos_9{
       {3,2},{2,3},{4,2},{5,3},
       {3,5},{2,4},{4,5},{5,4}
+    };
+    std::vector<Point> pos_10{
+      {4,4},{4,5},{5,4},{5,5}
     };
 
     long calc_costmap(const Point&);
