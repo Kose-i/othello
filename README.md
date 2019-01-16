@@ -2,6 +2,8 @@
 
 This is othello repository
 
+[travis-test](https://travis-ci.org/Kose-i/othello/branches)
+
 [comment]: # ()
 
 ## File constitution

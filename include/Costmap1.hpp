@@ -7,10 +7,12 @@
 #include "Point.hpp"
 #include "Board.hpp"
 
-class Costmap_1
+class Costmap1
 {
   public:
-    Costmap_1(const std::string& filename);
+    Costmap1();
+    Costmap1(const std::string&);
+    void init_param(const std::string&);
   private:
     using Param_type = int;
     Param_type param1;
@@ -29,24 +31,40 @@ class Costmap_1
     *{5,7,9
     */
   private:
-    std::vector<Point> edge{{0,0},{0,7},{7,0},{7,7}};
-    std::vector<Point> edge_surround{{1,0},{1,1},{0,1},
-    {0,6},{1,6},{1,7},
-    {6,0},{6,1},{7,1},
-    {7,6},{6,6},{6,7}};
+    std::vector<Point> pos_1{{0,0},{0,7},{7,0},{7,7}};
+    std::vector<Point> pos_2{
+      {0,1},{1,0},{0,6},{1,7},
+      {7,1},{6,0},{7,6},{6,7}
+    };
+    std::vector<Point> pos_3{
+      {1,1},{1,6},{6,1},{6,6}
+    };
+    std::vector<Point> pos_4{
+      {0,2},{2,0},{0,5},{2,7},
+      {5,0},{7,2},{5,7},{7,5}
+    };
+    std::vector<Point> pos_5{
+      {0,3},{3,0},{0,4},{4,0},
+      {7,3},{3,7},{7,4},{4,7}
+    };
+    std::vector<Point> pos_6{
+      {1,2},{2,1},{1,5},{2,6},
+      {5,1},{6,2},{5,6},{6,5}
+    };
+    std::vector<Point> pos_7{
+      {1,3},{3,1},{1,4},{4,1},
+      {6,3},{3,6},{6,4},{4,6}
+    };
+    std::vector<Point> pos_8{
+      {2,2},{2,5},{5,2},{5,5}
+    };
+    std::vector<Point> pos_9{
+      {3,2},{2,3},{4,2},{5,3},
+      {3,5},{2,4},{4,5},{5,4}
+    };
 
-    std::vector<std::vector<int>> costmap{
-          {100,-40,20, 5, 5,20,-40,100},
-          {-40,-80,-1,-1,-1,-1,-80,-40},
-          { 20, -1, 5, 1, 1, 5, -1, 20},
-          {  5, -1, 1, 0, 0, 1, -1,  5},
-          {  5, -1, 1, 0, 0, 1, -1,  5},
-          { 20, -1, 5, 1, 1, 5, -1, 20},
-          {-40,-80,-1,-1,-1,-1,-80,-40},
-          {100,-40,20, 5, 5,20,-40,100},
-        };
-    long calc_costmap(Board&, const Board_env&, const Board_env&);
+    long calc_costmap(const Point&);
   public:
-    long calc_cost(Board&, const Board_env&, const Board_env&);
+    long calc_cost(const Board&, const Board_env&, const Board_env&);
 };
 #endif
