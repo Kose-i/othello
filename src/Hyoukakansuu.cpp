@@ -21,7 +21,7 @@ long Hyoukakansuu::calc_cost(const Board& cp_board, const Board_env& my_stone, c
   long cost_from_costmap = calc_costmap(cp_board, my_stone, enemy_stone);
 
   //minimam is necessary
-  return (10*cost_from_enemy_put_able_spot - 3*cost_from_my_put_able_spot - cost_from_costmap);
+  return (5*cost_from_enemy_put_able_spot - 3*cost_from_my_put_able_spot - cost_from_costmap);
 };
 
 long Hyoukakansuu::calc_costmap(const Board& cp_board, const Board_env& my_stone, const Board_env& enemy_stone)

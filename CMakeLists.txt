@@ -11,6 +11,8 @@ add_executable(main
     src/Computer.cpp
     src/Point.cpp
     src/Player.cpp
+
     src/Hyoukakansuu.cpp
     src/Costmap1.cpp
+
 )
