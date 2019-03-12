@@ -3,7 +3,6 @@
 
 #include "Board.hpp"
 #include "Hand.hpp"
-#include "Costmap1.hpp"
 
 #include <vector>
 #include <memory>

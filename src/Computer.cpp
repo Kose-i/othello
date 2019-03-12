@@ -7,6 +7,7 @@
 
 #include "Board.hpp"
 #include "Point.hpp"
+#include "CalcCost.hpp"
 
 Computer::Computer(std::shared_ptr<class Board>& board, const Board_env& com_color) :board_state(board), my_stone_color(com_color){};
 Computer::~Computer(){};
@@ -34,15 +35,15 @@ Point Computer::define_spot()
 
   std::cout << "Computer class: deine_spot\n";
 
-  for (auto i = 0;i < size;++i)
-  {
+  for (auto i = 0;i < size;++i) {
     Board cp_board(*board_state);
 
     cp_board.put_stone(put_able[i] ,my_stone_color);
     //cp_board.print_board();
 
-    long cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
-    if(cost < cost_minimum) {
+//    long cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
+    long cost = CalcCost(); //TEST
+    if (cost < cost_minimum) {
       cost_minimum = cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
       best_put = i;
     }

@@ -22,13 +22,10 @@ void Board::put_stone(const Point& pos ,const Board_env& my_color)
 {
   board[pos.get_y()][pos.get_x()] = my_color;
   const std::bitset<8> judge = judge_direction(pos,my_color);
-  for (int i = 0;i < 8;++i)
-  {
-    if(judge[i])
-    {
+  for (int i = 0;i < 8;++i) {
+    if(judge[i]) {
       Point new_pos = eight_direction[i] + pos;
-      while(board[new_pos.get_y()][new_pos.get_x()] != my_color)
-      {
+      while(board[new_pos.get_y()][new_pos.get_x()] != my_color) {
         board[new_pos.get_y()][new_pos.get_x()] = my_color;
         new_pos += eight_direction[i];
       }
@@ -67,15 +64,17 @@ std::vector<Point> Board::put_able_spot(const Board_env& my_color) const
 {
   std::vector<Point> putable_pos_box;
   Point pos{0,0};
-  for (int i = 0;i < 8;++i)
-  {
+  for (int i = 0;i < 8;++i) {
     pos.set_y(i);
-    for (int j = 0;j < 8;++j)
-    {
+    for (int j = 0;j < 8;++j) {
       pos.set_x(j);
-      if(board[i][j] != Board_env::blank)continue;
+      if(board[i][j] != Board_env::blank) {
+        continue;
+      }
       std::bitset<8> judge = judge_direction(pos,my_color);
-      if(!judge.none())putable_pos_box.push_back(pos);
+      if(!judge.none()) {
+        putable_pos_box.push_back(pos);
+      }
     }
   }
   return putable_pos_box;
@@ -94,15 +93,16 @@ Board_env Board::get_board_env(const Point& pos) const
 std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_color)const
 {
   std::bitset<8> judge("11111111");
-  if (pos.get_x() == 0)judge[0] = judge[3] = judge[5] = false;
+  if (false);
+  else if (pos.get_x() == 0)judge[0] = judge[3] = judge[5] = false;
   else if (pos.get_x() == 7)judge[2] = judge[4] = judge[7] = false;
-  if (pos.get_y() == 0)judge[0] = judge[1] = judge[2] = false;
+  if (false);
+  else if (pos.get_y() == 0)judge[0] = judge[1] = judge[2] = false;
   else if (pos.get_y() == 7)judge[5] = judge[6] = judge[7] = false;
 
   Board_env enemy_color = define_enemy_color(my_color);
-  for (int i = 0;i < 8;++i)
-  {
-    if(!judge[i])continue;
+  for (int i = 0;i < 8;++i) {
+    if (!judge[i]) continue;
     Point new_pos =   pos;
     new_pos += eight_direction[i];
 
@@ -115,8 +115,10 @@ std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_col
     }
     do{
       new_pos += eight_direction[i];
-      if(is_map_edge(new_pos, eight_direction[i]))break;
-    }while (board[new_pos.get_y()][new_pos.get_x()] == enemy_color);
+      if (is_map_edge(new_pos, eight_direction[i])) {
+        break;
+      }
+    } while (board[new_pos.get_y()][new_pos.get_x()] == enemy_color);
     if(board[new_pos.get_y()][new_pos.get_x()] != my_color) {
       judge[i] = false;
     }
@@ -126,7 +128,7 @@ std::bitset<8> Board::judge_direction(const Point& pos , const Board_env& my_col
 
 Board_env Board::define_enemy_color(const Board_env& my_color)const
 {
-  if(my_color == Board_env::black)return Board_env::white;
+  if (my_color == Board_env::black) return Board_env::white;
   else return Board_env::black;
 }
 
@@ -143,8 +145,8 @@ Board_env Board::define_winner()const
 
   std::cout << 'B' << black_count << '-' << white_count << 'W' << '\n';
 
-  if (black_count < white_count)return Board_env::white;
-  else if (black_count > white_count)return Board_env::black;
+  if (black_count < white_count) return Board_env::white;
+  else if (black_count > white_count) return Board_env::black;
   else return Board_env::blank;
 }
 
