@@ -3,12 +3,12 @@
 
 #include "Board.hpp"
 #include "Hand.hpp"
-//#include "Hyoukakansuu.hpp"
 #include "Costmap1.hpp"
+
 #include <vector>
 #include <memory>
 
-class Computer: public Hand ,private Costmap1//private Hyoukakansuu
+class Computer: public Hand
 {
   private:
     std::shared_ptr<Board> board_state;

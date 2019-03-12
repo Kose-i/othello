@@ -48,6 +48,6 @@ This is othello repository
 
 `./init_study [学習する数字(多いほど,時間がかかるが,学習する)]`
 
-`./main [csvdir/[保存したCSVファイル名]]`
+`./main config/csvdir/[保存したCSVファイル名]`
 
-デフォルトでは,で計算したファイルを使用します.
+デフォルトでは,10で計算したファイルを使用します.

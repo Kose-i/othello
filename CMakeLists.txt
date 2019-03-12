@@ -3,6 +3,11 @@ project(othello LANGUAGES CXX)
 
 include_directories(include)
 
+#add_executable(init_study
+#    src/Computer_init_study.cpp
+#    src/Computer_study.cpp
+#)
+
 add_executable(main
     src/main.cpp
     src/Game.cpp
@@ -11,8 +16,4 @@ add_executable(main
     src/Computer.cpp
     src/Point.cpp
     src/Player.cpp
-
-    src/Hyoukakansuu.cpp
-    src/Costmap1.cpp
-
 )
