@@ -11,19 +11,18 @@ This is othello repository
 | class | configure |
 ----|----
 | Game | Othello game class |
-| Hand | abstracle class |
-| Computer | computer class with using costmap|
-| Hyoukakansuu | for computer class |
+| Hand | abstracle class -> Computer, Player |
+| Computer | computer class with 強化学習|
 | Player | player class |
-| Point | position class |
+| Point | position class for map |
 
-[comment]: # (`csvdir`を設置後,簡易的なAIの実装に移動.)
+[comment]: # (`csvdir`を設置後,簡易的なAIの実装に移動. -> Hyoukakansuu class del)
 
 ### Computer class
 
-*computer* は他クラスを継承し,継承したクラスが持つ関数**calc_cost**を実行してコストの最小値となるオセロの場所を選択します.
+*computer* は強化学習により学習します. コンピュータ同士を学習させ, 最適な手を決定します.
 
-[comment]:# (calc costが最大値となる箇所をオセロの場所として選択する)
+[comment]:# (強化学習を理解する)
 
 ## How to Use
 
@@ -47,4 +46,8 @@ This is othello repository
 
 実行ファイルができたことを確認して実行します.
 
-`./main`
+`./init_study [学習する数字(多いほど,時間がかかるが,学習する)]`
+
+`./main [csvdir/[保存したCSVファイル名]]`
+
+デフォルトでは,で計算したファイルを使用します.
