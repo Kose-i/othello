@@ -33,7 +33,7 @@ class Game{
 
     void init();
     void run();
-    void result();
+    Board_env result();
 
 };
 #endif

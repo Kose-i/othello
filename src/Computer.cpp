@@ -42,7 +42,7 @@ Point Computer::define_spot()
     //cp_board.print_board();
 
 //    long cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
-    long cost = CalcCost(); //TEST
+    long cost = calc_.CalcCost(); //TEST
     if (cost < cost_minimum) {
       cost_minimum = cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
       best_put = i;

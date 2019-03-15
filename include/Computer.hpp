@@ -3,6 +3,7 @@
 
 #include "Board.hpp"
 #include "Hand.hpp"
+#include "CalcCost.hpp"
 
 #include <vector>
 #include <memory>
@@ -13,6 +14,7 @@ class Computer: public Hand
     std::shared_ptr<Board> board_state;
     Board_env my_stone_color;
     Board_env enemy_stone_color;
+    Agent_Computer calc_;
 
   private://function
     void init_enemy_color();

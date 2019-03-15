@@ -30,12 +30,7 @@ Point Player::define_spot()
   Point pos;
   bool find = false;
   do{
-    std::cout << "what your hand ? x: - y :";
-    /*/
-    std::cin >> pos.first;
-    std::cout << "y:";
-    std::cin >> pos.second;
-    */
+    std::cout << "what your hand ? x: - y :(exam'2 3')";
     std::string str,str2;
     std::cin >> str >> str2;
     if(!isdigit(str) || !isdigit(str2))continue;

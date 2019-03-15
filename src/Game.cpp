@@ -95,7 +95,7 @@ void Game::run()
   }
 };
 
-void Game::result()
+Board_env Game::result()
 {
   std::cout << "result---\n";
   board->print_board();
@@ -118,4 +118,5 @@ void Game::result()
     std::cout << "no winner no draw";
     throw("no winner no draw");
   }
+  return winner_stone;
 }
