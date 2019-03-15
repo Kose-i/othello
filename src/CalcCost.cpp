@@ -1,6 +1,7 @@
 #include "CalcCost.hpp"
 
 int Agent_Computer::reward_win = 1;
+int Agent_Computer::reward_draw = 0;
 int Agent_Computer::reward_lose = -1;
 
 Agent_Computer::Agent_Computer(){};
