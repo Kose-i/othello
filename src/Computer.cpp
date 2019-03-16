@@ -30,24 +30,9 @@ Point Computer::define_spot()
   if (size == 0) {
     return Point(-1,-1);
   }
-  auto best_put = 0;
-  auto cost_minimum = -1000;
 
   std::cout << "Computer class: deine_spot\n";
 
-  for (auto i = 0;i < size;++i) {
-    Board cp_board(*board_state);
-
-    cp_board.put_stone(put_able[i] ,my_stone_color);
-    //cp_board.print_board();
-
-//    long cost = calc_cost(cp_board, my_stone_color, enemy_stone_color);
-    long cost = calc_.CalcCost(); //TEST
-    if (cost < cost_minimum) {
-      cost_minimum = cost;// costmap[put_able[i].second][put_able[i].first] - 10 * pos.size();
-      best_put = i;
-    }
-  }
-  return put_able[best_put];
+  return calc_.select_high_Qparam(); //TEST
 }
 
