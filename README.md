@@ -2,7 +2,7 @@
 
 This is othello repository
 
-[[!Build Status](https://travis-ci.org/Kose-i/othello.svg?branch=master)](https://travis-ci.org/Kose-i/othello)
+[![Build Status](https://travis-ci.org/Kose-i/othello.svg?branch=master)](https://travis-ci.org/Kose-i/othello)
 
 [comment]: # ()
 
