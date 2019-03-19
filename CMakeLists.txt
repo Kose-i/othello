@@ -17,11 +17,11 @@ include_directories(include)
 
 add_executable(main
     src/main.cpp
-    src/Game.cpp
-    src/Board.cpp
-    src/Hand.cpp
-    src/Computer.cpp
     src/Point.cpp
+    src/Board.cpp
+    src/Game.cpp
+    src/Hand.cpp
     src/Player.cpp
+    src/Computer.cpp
     src/CalcCost.cpp
 )

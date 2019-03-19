@@ -46,8 +46,6 @@ This is othello repository
 
 実行ファイルができたことを確認して実行します.
 
-`./init_study [学習する数字(多いほど,時間がかかるが,学習する)]`
+`./init_study`
 
-`./main config/csvdir/[保存したCSVファイル名]`
-
-デフォルトでは,10で計算したファイルを使用します.
+`./main`
