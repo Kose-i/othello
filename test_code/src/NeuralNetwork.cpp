@@ -76,13 +76,13 @@ void NeuralNetwork::update_w0(double predict_ans,std::vector<double> tyuukansou,
   }
 }
 void NeuralNetwork::update_w1(double predict_ans, std::vector<double> tyuukansou, std::vector<double> outputsou, std::vector<double> input_prob, double input_answer) {
-  for (auto i = 0;i < w0.size();++i) {
-    for (auto j = 0;j < w0[0].size();++j) {
+  for (auto i = 0;i < w1.size();++i) {
+    for (auto j = 0;j < w1[0].size();++j) {
       double diff_ans = ( input_answer - predict_ans ) * predict_ans * (1 - predict_ans) * tyuukansou[j];
-      if (i == w0.size() - 1) {
-        w0[i][j] += alpha * (-1.0) * diff_ans;
+      if (i == w1.size() - 1) {
+        w1[i][j] += alpha * (-1.0) * diff_ans;
       } else {
-        w0[i][j] += alpha * diff_ans * tyuukansou[j];
+        w1[i][j] += alpha * diff_ans * tyuukansou[j];
       }
     }
   }
@@ -93,8 +93,9 @@ NeuralNetwork::NeuralNetwork(const int& size):w0(size + 1, std::vector<double>(s
 }
 NeuralNetwork::~NeuralNetwork(){}
 void NeuralNetwork::fit(const std::vector<std::vector<double>>& input_prob, const std::vector<double>& input_answer){
-  double err = 10000;//double max
+  double err = 100000;//double max
   while (err > err_thread) {
+    err = 0.0;
     for (auto i = 0;i < input_prob.size();++i) {
       std::vector<double> tyuukansou = forward_w0(input_prob[i]);
       std::vector<double> outputsou = forward_w1(tyuukansou);
