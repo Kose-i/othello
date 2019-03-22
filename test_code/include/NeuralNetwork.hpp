@@ -16,6 +16,10 @@ class NeuralNetwork{
     std::vector<double> forward_w0(const std::vector<double>&)const;
     std::vector<double> forward_w1(const std::vector<double>&)const;
     double sigmoid(const double& x)const;
+    double alpha = 0.1; //study rate
+    double err_thread = 10;
+    void update_w0(double, std::vector<double>, std::vector<double>,double);
+    void update_w1(double, std::vector<double>, std::vector<double>,std::vector<double>, double);
   public:
     NeuralNetwork(const int& size);
     ~NeuralNetwork();
