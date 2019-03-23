@@ -1,32 +1,34 @@
 #ifndef NeuralNetwork_hpp
 #define NeuralNetwork_hpp
 
+#include <iostream>
 #include <vector>
-#include <random>
-
-/*3層ニューラルネットワーク*/
+#include <cmath>
 
 class NeuralNetwork{
   private:
-    std::random_device rnd;
-    std::vector<std::vector<double>> w0;
-    std::vector<std::vector<double>> w1;
-    void init_w0();
-    void init_w1();
-    std::vector<double> forward_w0(const std::vector<double>&)const;
-    std::vector<double> forward_w1(const std::vector<double>&)const;
-    double sigmoid(const double& x)const;
-    double alpha = 0.1; //study rate
-    double err_thread = 1;
-    void update_w0(double, std::vector<double>, std::vector<double>,double);
-    void update_w1(double, std::vector<double>, std::vector<double>,std::vector<double>, double);
-  public:
-    NeuralNetwork(const int& size);
-    ~NeuralNetwork();
-    void fit(const std::vector<std::vector<double>>& input_prob, const std::vector<double>& input_answer);
-    double predict(const std::vector<double>& input_prob)const;
+    static double ALPHA;
+    static unsigned INPUTNO;
+    static unsigned HIDDENNO;
+    static unsigned SEED;
+    static unsigned MAXINPUTNO;
+    static unsigned BIGNUM;
+    static double LIMIT;
 
-    void print_w0()const;
-    void print_w1()const;
+    std::vector<std::vector<double>> wh;//[HIDDENNO][INPUTNO+1]
+    std::vector<double> wo;//[HIDDENNO+1]
+
+    double f(const double& u)const;//sigmoid
+    void initwh();//中間層の重みの初期化
+    void initwo();//出力層の重みの初期化
+    double forward(const std::vector<double>& input_problem, std::vector<double>& tyuukansou_output)const;
+    void olearn(const std::vector<double>& input_problem, const double& input_ans, const std::vector<double>& tyuukansou_output, const double& predict_ans);
+    void hlearn(const std::vector<double>& input_problem, const double& input_ans, const std::vector<double>& tyuukansou_output, const double& predict_ans);
+  public:
+    NeuralNetwork();
+    void fit(const std::vector<std::vector<double>>& input_prob_box, const std::vector<double>& input_ans_box);
+    double predict(const std::vector<double>& input_prob)const;
+    void print(void)const;//wh, wo の表示
+
 };
 #endif

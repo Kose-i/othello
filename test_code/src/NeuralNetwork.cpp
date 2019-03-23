@@ -1,140 +1,131 @@
 #include "NeuralNetwork.hpp"
 
 #include <iostream>
-#include <vector>
 #include <random>
-#include <numeric>//accumulate
-#include <cmath>//std::expr
 
-void NeuralNetwork::init_w0(){
+double NeuralNetwork::ALPHA = 10.0;
+unsigned NeuralNetwork::INPUTNO = 3;
+unsigned NeuralNetwork::HIDDENNO= 3;
+unsigned NeuralNetwork::SEED =65535;
+unsigned NeuralNetwork::MAXINPUTNO = 100;
+unsigned NeuralNetwork::BIGNUM =100;
+double NeuralNetwork::LIMIT = 0.001;
+  /*
+     std::vector<std::vector<double>> wh;//[HIDDENNO][INPUTNO+1]
+     std::vector<double> wo;//[HIDDENNO+1]
+   */
 
+void NeuralNetwork::initwh() {//中間層の重みの初期化
   std::random_device seed_gen;
   std::mt19937 engine(seed_gen());
 
   std::uniform_real_distribution<> dist(-1.0, 1.0);
-  for (auto& e : w0) {
-    for (auto& f : e) {
-      f = dist(engine)*10;
+
+  for (auto e : wh) {
+    for (auto f : e) {
+      f = dist(engine);
     }
   }
 }
 
-void NeuralNetwork::init_w1(){
+void NeuralNetwork::initwo() {//出力層の重みの初期化
   std::random_device seed_gen;
   std::mt19937 engine(seed_gen());
 
   std::uniform_real_distribution<> dist(-1.0, 1.0);
-  for (auto& e : w1) {
-    for (auto& f : e) {
-      f = dist(engine)*10;
-    }
+
+  for (auto e : wo) {
+    e = dist(engine);
   }
 }
 
-std::vector<double> NeuralNetwork::forward_w0(const std::vector<double>& input_prob)const {
-  std::vector<double> output(input_prob.size(), 0);
-  for (auto i = 0;i < w0.size();++i) {
-    for (auto j = 0;j < w0[0].size();++j) {
-      if (i == w0[0].size()) {
-        output[j] += sigmoid(w0[i][j]*1);
-      } else {
-        output[i] += sigmoid(w0[i][j]*input_prob[j]);
-      }
+void NeuralNetwork::print(void)const {
+  std::cout << "wh:";
+  for (const auto& e : wh) {
+    for (const auto& f : e) {
+      std::cout << f << ' ';
     }
+    std::cout << '\n';
   }
-  return output;
+
+  std::cout << "wo:";
+  for (const auto& e : wo) {
+    std::cout << e << ' ';
+  }
+  std::cout << '\n';
 }
 
-std::vector<double> NeuralNetwork::forward_w1(const std::vector<double>& input_prob) const{
-  std::vector<double> output(input_prob.size(), 0);
-  for (auto i = 0;i < w1.size();++i) {
-    for (auto j = 0;j < w1[0].size();++j) {
-      if (i == w1[0].size()) {
-        output[j] += sigmoid(w1[i][j]);
-      } else {
-        output[i] += sigmoid(w1[i][j]*input_prob[j]);
-      }
-    }
+double NeuralNetwork::forward(const std::vector<double>& input_problem, std::vector<double>& tyuukansou_output) const{
+  //assert(input_problem[0].size() == INPUTNO);
+  //static_assert(tyuukansou_output.size() == HIDDENNO);
+
+ for(auto i=0;i<HIDDENNO;++i) {
+  double u = 0.0;
+  for(auto j=0;j<INPUTNO;++j) {
+    u += input_problem[j]*wh[i][j]; 
   }
-  return output;
+  u -= wh[i][INPUTNO];
+  tyuukansou_output[i] = f(u);
+ }
+
+ double o = 0;
+ for(auto i=0;i<HIDDENNO;++i) {
+   o += tyuukansou_output[i]*wo[i];
+ }
+ o -= wo[HIDDENNO];
+ 
+ return f(o);
 }
 
-double NeuralNetwork::sigmoid(const double& x) const{
-  return (1/(1+std::exp(-x)));
+void NeuralNetwork::olearn(const std::vector<double>& input_problem, const double& input_ans, const std::vector<double>& tyuukansou_output, const double& predict_ans) {
+
+ double d=(input_ans-predict_ans)*predict_ans*(1-predict_ans);/*ë·ÌvZ*/
+ for(auto i=0;i<HIDDENNO;++i) {
+  wo[i]+=ALPHA*tyuukansou_output[i]*d ;/*dÝÌwK*/
+ }
+ wo[HIDDENNO]+=ALPHA*(-1.0)*d ;/*µ«¢lÌwK*/
+ 
 }
 
-void NeuralNetwork::update_w0(double predict_ans,std::vector<double> tyuukansou,std::vector<double> input_prob,double input_answer) {
-  double diff_ans = ( input_answer - predict_ans ) * predict_ans * (1 - predict_ans);
-  for (auto i = 0;i < w0.size();++i) {
-    for (auto j = 0;j < w0[0].size();++j) {
-      if (i == w0.size() - 1) {
-        w0[i][j] += alpha * (-1.0) * diff_ans;
-      } else {
-        w0[i][j] -= alpha * diff_ans * tyuukansou[j];
-      }
-    }
+void NeuralNetwork::hlearn(const std::vector<double>& input_problem, const double& input_ans, const std::vector<double>& tyuukansou_output, const double& predict_ans) {
+
+ for(auto j=0;j<HIDDENNO;++j) {
+  double dj = tyuukansou_output[j] * (1-tyuukansou_output[j]) * wo[j] * (input_ans - predict_ans) * predict_ans * (1-predict_ans) ;
+  for(auto i=0;i<INPUTNO;++i) {
+   wh[j][i] += ALPHA * input_problem[i] * dj ;
   }
+  wh[j][INPUTNO] += ALPHA * (-1.0) * dj ;
+ }
+
 }
-void NeuralNetwork::update_w1(double predict_ans, std::vector<double> tyuukansou, std::vector<double> outputsou, std::vector<double> input_prob, double input_answer) {
-  for (auto i = 0;i < w1.size();++i) {
-    for (auto j = 0;j < w1[0].size();++j) {
-      double diff_ans = ( input_answer - predict_ans ) * predict_ans * (1 - predict_ans) * tyuukansou[j];
-      if (i == w1.size() - 1) {
-        w1[i][j] += alpha * (-1.0) * diff_ans;
-      } else {
-        w1[i][j] += alpha * diff_ans * tyuukansou[j];
-      }
-    }
-  }
+
+
+double NeuralNetwork::f(const double& u)const {
+ return 1.0/(1.0+std::exp(-u)) ;
 }
-NeuralNetwork::NeuralNetwork(const int& size):w0(size + 1, std::vector<double>(size)), w1(size + 1,std::vector<double>(size)){
-  init_w0();
-  init_w1();
-}
-NeuralNetwork::~NeuralNetwork(){}
-void NeuralNetwork::fit(const std::vector<std::vector<double>>& input_prob, const std::vector<double>& input_answer){
-  double err = 100000;//double max
-  while (err > err_thread) {
+NeuralNetwork::NeuralNetwork():wo(HIDDENNO+1), wh(HIDDENNO,std::vector<double>(INPUTNO+1)) {};
+void NeuralNetwork::fit(const std::vector<std::vector<double>>& input_prob_box, const std::vector<double>& input_ans_box) {
+  initwh();
+  initwo();
+  print();
+
+  double err = LIMIT + 1;//double max
+
+  while (err > LIMIT) {
     err = 0.0;
-    for (auto i = 0;i < input_prob.size();++i) {
-      std::vector<double> tyuukansou = forward_w0(input_prob[i]);
-      std::vector<double> outputsou = forward_w1(tyuukansou);
-      std::cout << "outputsou:";
-      for (auto e : outputsou) {
-        std::cout << e << ' ';
-      }
-      std::cout << '\n';
-      double predict_ans = sigmoid(std::accumulate(outputsou.begin(), outputsou.end(), 0.0));
-      std::cout << "predict:" << predict_ans << '\n';
-      update_w0(predict_ans, tyuukansou, input_prob[i], input_answer[i]);
-      update_w1(predict_ans, tyuukansou, outputsou, input_prob[i], input_answer[i]);
-      err += (input_answer[i] - predict_ans)*(input_answer[i] - predict_ans);
+    for (auto i = 0;i < input_prob_box.size();++i) {
+      std::vector<double> tyuukansou_output(HIDDENNO);
+      double o = forward(input_prob_box[i], tyuukansou_output);
+      olearn(input_prob_box[i], input_ans_box[i], tyuukansou_output, o);
+      hlearn(input_prob_box[i], input_ans_box[i], tyuukansou_output, o);
+      err += (o - input_ans_box[i])*(o - input_ans_box[i]);
     }
     std::cout << "err:" << err << '\n';
-    print_w0();
-    print_w1();
   }
+  std::cout << "fit finish\n";
+}
+double NeuralNetwork::predict(const std::vector<double>& input_prob) const {
+  std::vector<double> tmp(HIDDENNO);
+  return forward(input_prob, tmp);
 }
 
-double NeuralNetwork::predict(const std::vector<double>& input_prob)const{
-  std::vector<double> tyuukansou = forward_w0(input_prob);
-  std::vector<double> outputsou = forward_w1(tyuukansou);
-  return sigmoid(std::accumulate(outputsou.begin(), outputsou.end(), 0.0));
-}
-
-void NeuralNetwork::print_w0()const{
-  for (const auto& e : w0) {
-    for (const auto& f : e) {
-      std::cout << f << ' ';
-    }
-  }
-  std::cout << '\n';
-}
-void NeuralNetwork::print_w1()const{
-  for (const auto& e : w1) {
-    for (const auto& f : e) {
-      std::cout << f << ' ';
-    }
-  }
-  std::cout << '\n';
-}
