@@ -7,3 +7,8 @@ add_executable(NeuralNetwork_test
   src/NeuralNetwork.cpp
   src/NeuralNetworktest.cpp
 )
+
+add_executable(ConvolutionPooling_test
+  src/ConvolutionPooling.cpp
+  src/ConvolutionPoolingtest.cpp
+)
