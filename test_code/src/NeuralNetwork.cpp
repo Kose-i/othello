@@ -1,7 +1,10 @@
 #include "NeuralNetwork.hpp"
 
 #include <iostream>
+#include <vector>
 #include <random>
+#include <limits>
+#include <cassert>
 
 double NeuralNetwork::ALPHA = 10.0;
 unsigned NeuralNetwork::INPUTNO = 3;
@@ -56,8 +59,8 @@ void NeuralNetwork::print(void)const {
 }
 
 double NeuralNetwork::forward(const std::vector<double>& input_problem, std::vector<double>& tyuukansou_output) const{
-  //assert(input_problem[0].size() == INPUTNO);
-  //static_assert(tyuukansou_output.size() == HIDDENNO);
+  assert(input_problem.size() == INPUTNO);
+  assert(tyuukansou_output.size() == HIDDENNO);
 
  for(auto i=0;i<HIDDENNO;++i) {
   double u = 0.0;
@@ -79,23 +82,24 @@ double NeuralNetwork::forward(const std::vector<double>& input_problem, std::vec
 
 void NeuralNetwork::olearn(const std::vector<double>& input_problem, const double& input_ans, const std::vector<double>& tyuukansou_output, const double& predict_ans) {
 
- double d=(input_ans-predict_ans)*predict_ans*(1-predict_ans);/*ë·ÌvZ*/
- for(auto i=0;i<HIDDENNO;++i) {
-  wo[i]+=ALPHA*tyuukansou_output[i]*d ;/*dÝÌwK*/
- }
- wo[HIDDENNO]+=ALPHA*(-1.0)*d ;/*µ«¢lÌwK*/
- 
+  double d=(input_ans-predict_ans)*predict_ans*(1-predict_ans);
+
+  for(auto i = 0;i < HIDDENNO;++i) {
+    wo[i] += ALPHA * tyuukansou_output[i] * d;
+  }
+
+  wo[HIDDENNO] += ALPHA * (-1.0) * d;
 }
 
 void NeuralNetwork::hlearn(const std::vector<double>& input_problem, const double& input_ans, const std::vector<double>& tyuukansou_output, const double& predict_ans) {
 
- for(auto j=0;j<HIDDENNO;++j) {
-  double dj = tyuukansou_output[j] * (1-tyuukansou_output[j]) * wo[j] * (input_ans - predict_ans) * predict_ans * (1-predict_ans) ;
-  for(auto i=0;i<INPUTNO;++i) {
-   wh[j][i] += ALPHA * input_problem[i] * dj ;
+  for(auto j=0;j<HIDDENNO;++j) {
+    double dj = tyuukansou_output[j] * (1-tyuukansou_output[j]) * wo[j] * (input_ans - predict_ans) * predict_ans * (1-predict_ans) ;
+    for(auto i=0;i<INPUTNO;++i) {
+      wh[j][i] += ALPHA * input_problem[i] * dj ;
+    }
+    wh[j][INPUTNO] += ALPHA * (-1.0) * dj ;
   }
-  wh[j][INPUTNO] += ALPHA * (-1.0) * dj ;
- }
 
 }
 
@@ -109,7 +113,7 @@ void NeuralNetwork::fit(const std::vector<std::vector<double>>& input_prob_box, 
   initwo();
   print();
 
-  double err = LIMIT + 1;//double max
+  double err = std::numeric_limits<double>::max();
 
   while (err > LIMIT) {
     err = 0.0;

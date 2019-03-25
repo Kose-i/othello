@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 /*
     const unsigned INPUTSIZE = 11;
@@ -18,8 +19,8 @@ ConvolutionPooling::ConvolutionPooling():filter(FILTERSIZE, std::vector<double>(
 }
 
 void ConvolutionPooling::conv(const std::vector<std::vector<double>>& input_data, std::vector<std::vector<double>>& conv_result) {
-//  assert(input_data.size() == INPUTSIZE);
-//  assert(input_data[0].size() == INPUTSIZE);
+  assert(input_data[0].size() == INPUTSIZE);
+  assert(input_data.size() == INPUTSIZE);
 //  assert(conv_result.size() == INPUTSIZE);
 //  assert(conv_result[0].size() == INPUTSIZE);
   unsigned startpoint = FILTERSIZE / 2;
@@ -50,10 +51,10 @@ void ConvolutionPooling::conv_result(const std::vector<std::vector<double>>& con
 }
 
 void ConvolutionPooling::pooling(const std::vector<std::vector<double>>& conv_out, std::vector<std::vector<double>>& poolout) {
-//  assert(conv_out.size() == INPUTSIZE)
-//  assert(conv_out[0].size() == INPUTSIZE)
-//  assert(poolout.size() == POOLOUTSIZE)
-//  assert(poolout[0].size() == POOLOUTSIZE)
+  assert(conv_out.size() == INPUTSIZE);
+  assert(conv_out[0].size() == INPUTSIZE);
+  assert(poolout.size() == POOLOUTSIZE);
+  assert(poolout[0].size() == POOLOUTSIZE);
   for (auto i = 0;i < POOLOUTSIZE;++i) {
     for (auto j = 0;j < POOLOUTSIZE;++j) {
       poolout[i][j] = maxPooling(conv_out, i,j);
@@ -62,8 +63,8 @@ void ConvolutionPooling::pooling(const std::vector<std::vector<double>>& conv_ou
 
 }
 double ConvolutionPooling::maxPooling(const std::vector<std::vector<double>>& convout, const int& i_start, const int& j_start) {
-//  assert(convout.size() == INPUTSIZE)
-//  assert(convout[0].size() == INPUTSIZE)
+  assert(convout.size() == INPUTSIZE);
+  assert(convout[0].size() == INPUTSIZE);
   int halfpool = POOLSIZE/2;
   double max = convout[i_start*POOLOUTSIZE+1+halfpool][j_start*POOLOUTSIZE+1+halfpool];
   for(auto i=POOLOUTSIZE*i_start+1;i<=POOLOUTSIZE*i_start+1+(POOLSIZE-halfpool);++i) {
