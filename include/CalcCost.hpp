@@ -24,7 +24,7 @@ class Agent_Computer{
     Point select_random_action();
     long CalcCost(const Point&)const;
   public:
-    Agent_Computer();
+    Agent_Computer(std::shared_ptr<Board>&, const Board_env&);
     Point select_high_Qparam()const;//内部でCalcCost()を使用
     Point select_action()const;
 };

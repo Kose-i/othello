@@ -9,7 +9,7 @@
 #include "Point.hpp"
 #include "CalcCost.hpp"
 
-Computer::Computer(std::shared_ptr<class Board>& board, const Board_env& com_color) :board_state(board), my_stone_color(com_color){};
+Computer::Computer(std::shared_ptr<class Board>& board, const Board_env& com_color) :board_state(board), my_stone_color(com_color), calc_(Agent_Computer(board, com_color)){};
 Computer::~Computer(){};
 
 void Computer::init()
@@ -31,7 +31,7 @@ Point Computer::define_spot()
     return Point(-1,-1);
   }
 
-  std::cout << "Computer class: deine_spot\n";
+  std::cout << "Computer class: define_spot\n";
 
   return calc_.select_high_Qparam(); //TEST
 }
